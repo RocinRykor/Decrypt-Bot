@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.basic.PingCommand;
 import studio.rrprojects.decryptbot.commands.basic.RollCommand;
+import studio.rrprojects.decryptbot.commands.basic.RuleCommand;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class CommandController {
         basicCommands = new ArrayList<>();
         basicCommands.add(new PingCommand());
         basicCommands.add(new RollCommand());
+        basicCommands.add(new RuleCommand());
 
         for (Command command : basicCommands) {
             command.Initialize();

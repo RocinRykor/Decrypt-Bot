@@ -15,7 +15,7 @@ public class MainController {
     private final JDA jda;
     private final CommandController commandController;
     private final BotListener botListener;
-    private String mainDir;
+    private static String mainDir;
 
     MainController() {
         System.out.println("MAIN CONTROLLER: STARTING!");
@@ -75,7 +75,7 @@ public class MainController {
         return commandController;
     }
 
-    public String getMainDir() {
+    public static String getMainDir() {
         return mainDir;
     }
 
