@@ -1,14 +1,17 @@
 package studio.rrprojects.decryptbot.rollers;
 
+import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import studio.rrprojects.decryptbot.commands.CommandContainer;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
+import studio.rrprojects.decryptbot.utils.MyMessageBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ShadowrunRoller {
     private final HashMap<String, Runnable> commandTable;
+    RollFormatter rollFormatter;
     private ArrayList<String> listParameters;
     private final int defaultTargetNumber = 4;
     private int dicePool;
@@ -22,6 +25,8 @@ public class ShadowrunRoller {
         commandTable.put("Success", this::SuccessTest);
         commandTable.put("Open", this::OpenTest);
         commandTable.put("Initiative", this::InitiativeTest);
+
+        rollFormatter = new RollFormatter();
     }
 
     public void Roll(CommandContainer cmd, MessageReceivedEvent event) {
@@ -56,12 +61,14 @@ public class ShadowrunRoller {
     }
 
     private void OutputSuccessResults(RollContainer rollContainer) {
-        String message = "Roll By: " + event.getAuthor().getName() + "\n" +
-                "Dice Pool: " + rollContainer.getDicePool() + ", Target: " + rollContainer.getTargetNumber() + "\n" +
-                "Rolls: " + rollContainer.getListRolls().toString() + "\n" +
-                "Hits: " + rollContainer.getCountHits();
+        String author = event.getAuthor().getName();
+        // getAuthorPref
 
-        MessageUtils.SendMessage(message, event.getChannel());
+        rollContainer.setAuthor(author);
+
+        MessageEmbed message = rollFormatter.Parse(rollContainer);
+
+        MessageUtils.SendEmbedMessage(message, event.getChannel());
     }
 
     private void OpenTest() {

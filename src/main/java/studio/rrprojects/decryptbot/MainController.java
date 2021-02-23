@@ -36,7 +36,7 @@ public class MainController {
         botListener = new BotListener(commandController);
         jda.addEventListener(botListener);
 
-        RulesGui rulesGui = new RulesGui("Rules GUI v1", this);
+        //RulesGui rulesGui = new RulesGui("Rules GUI v1", this);
     }
 
     private JDA StartJDA() {

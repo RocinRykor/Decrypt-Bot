@@ -35,6 +35,7 @@ public class RulesGui extends JFrame {
     //JSON
     private File jsonFile;
     private FileWriter writer;
+    private JSONObject mainObj;
 
     public RulesGui(String title, MainController mainController) {
         super(title);
@@ -53,7 +54,7 @@ public class RulesGui extends JFrame {
 
         String title = txtFieldTitle.getText();
         String source = txtFieldSource.getText();
-        String description = txtAreaDescription.getText();
+        String description = CleanupDescription(txtAreaDescription.getText());
         ArrayList<String> tags = ProcessKeywords(txtFieldKeywords.getText());
 
         JSONObject ruleObj = new JSONObject();
@@ -63,24 +64,30 @@ public class RulesGui extends JFrame {
         ruleContents.put("description", description);
         ruleContents.put("keywords", tags);
 
-        ruleObj.put(title, ruleContents);
+        mainObj.put(title, ruleContents);
 
-        String jsonString = ruleObj.toString();
-        JsonValue writeJson = Json.parse(jsonString);
-
-        try {
-            writeJson.writeTo(writer, PrettyPrint.PRETTY_PRINT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        JSONUtils.WriteJsonToFile(jsonFile, mainObj);
 
         System.out.println("RULES GUI: RULE SUBMITTED!");
+    }
+
+    private String CleanupDescription(String input) {
+        String doubleLineBreakPlaceHolder = "=!="; //Something absurd that wont show in any valid description
+        String processedString = input;
+
+        //First replace double line breaks with my placeholder
+        processedString = processedString.replaceAll("\n\n", doubleLineBreakPlaceHolder);
+
+        //Remove all line breaks with a space
+        processedString = processedString.replaceAll("\n", " ");
+
+        //then removed the mid word hyphen from line breaks in the middle of large words
+        processedString = processedString.replaceAll("- ", "");
+
+        //cleanup by replacing my placeholder with the double line break
+        processedString = processedString.replaceAll(doubleLineBreakPlaceHolder, "\n\n");
+
+        return processedString;
     }
 
     private ArrayList<String> ProcessKeywords(String text) {
@@ -116,6 +123,7 @@ public class RulesGui extends JFrame {
 
     private void Initialize() {
         LoadJSONFile();
+
         buttonSubmit.addActionListener(actionEvent -> {
             SubmitNewRule();
         });
@@ -133,5 +141,6 @@ public class RulesGui extends JFrame {
         String jsonFilePath = jsonDirString + "rules_repo.json";
         jsonFile = FileUtils.LoadFile(jsonFilePath);
 
+        mainObj = JSONUtils.LoadJsonFromFile(jsonFile);
     }
 }

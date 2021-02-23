@@ -8,15 +8,14 @@ import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.CommandContainer;
 import studio.rrprojects.decryptbot.utils.FileUtils;
 import studio.rrprojects.decryptbot.utils.JSONUtils;
+import studio.rrprojects.decryptbot.utils.RollUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 public class RuleCommand extends Command {
 
-    private final File jsonFile;
     private final JSONObject rulesObj;
     private final ArrayList<RuleObject> listRules;
 
@@ -37,7 +36,7 @@ public class RuleCommand extends Command {
 
     public RuleCommand() {
         String filePath = MainController.getMainDir() + "JSON" + File.separator + "rules_repo.json";
-        jsonFile = FileUtils.LoadFile(filePath);
+        File jsonFile = FileUtils.LoadFile(filePath);
         rulesObj = JSONUtils.LoadJsonFromFile(jsonFile);
         listRules = ConvertJsonToArrayList();
     }
@@ -55,8 +54,13 @@ public class RuleCommand extends Command {
 
     @Override
     public void executeMain(CommandContainer cmd, MessageReceivedEvent event) {
-        RuleObject rule = listRules.get(0);
 
+        int listSize = listRules.size();
+        int randomNum = RollUtils.getRandomRange(0, listSize - 1);
+
+        RuleObject rule = listRules.get(randomNum); //Get Random
+
+        assert rule != null;
         String message = "Title: " + rule.title + "\n" +
                 "Source: " + rule.source +"\n" +
                 "Description: " + rule.description;
