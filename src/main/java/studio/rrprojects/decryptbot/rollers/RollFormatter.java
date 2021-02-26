@@ -11,17 +11,17 @@ public class RollFormatter {
     private RollContainer rollContainer;
 
     public void MINIMAL() {
-        builder.addWithUnderLine("Pool: " + rollContainer.getDicePool() + ", TN: " + rollContainer.getTargetNumber() + ", Hits: < " + rollContainer.getCountHits() + " >");
+        builder.addWithUnderLine("Pool: " + rollContainer.getDicePool() + ", TN: " + rollContainer.getTargetNumber() + ", <Hits: " + rollContainer.getCountHits() + " >");
     }
 
     public void STANDARD( ) {
         builder.addWithUnderLine("Dice Pool: " + rollContainer.getDicePool());
         builder.add("> Target Number: " + rollContainer.getTargetNumber());
-        builder.addWithUnderLine("Hits: < " + rollContainer.getCountHits() + " >");
+        builder.addWithUnderLine("<Hits: " + rollContainer.getCountHits() + " >");
     }
 
     public void STANDARD_INVERTED() {
-        builder.addWithUnderLine("Hits: < " + rollContainer.getCountHits() + " >");
+        builder.addWithUnderLine("<Hits: " + rollContainer.getCountHits() + " >");
         builder.add("> Target Number: " + rollContainer.getTargetNumber());
         builder.addWithUnderLine("Dice Pool: " + rollContainer.getDicePool());
     }
@@ -32,11 +32,11 @@ public class RollFormatter {
         builder.add("> Results: " + rollContainer.getListRolls().toString());
         builder.add("> Target Number: " + rollContainer.getTargetNumber());
         builder.addBlankLine();
-        builder.addWithUnderLine("Hits: < " + rollContainer.getCountHits() + " >");
+        builder.addWithUnderLine("<Hits: " + rollContainer.getCountHits() + " >");
     }
 
     public void VERBOSE_INVERTED() {
-        builder.addWithUnderLine("Hits: < " + rollContainer.getCountHits() + " >");
+        builder.addWithUnderLine("<Hits: " + rollContainer.getCountHits() + " >");
         builder.addBlankLine();
         builder.add("> Results: " + rollContainer.getListRolls().toString());
         builder.add("> Target Number: " + rollContainer.getTargetNumber());
@@ -52,11 +52,12 @@ public class RollFormatter {
         This is the only spot that will change depending on formatting
         Will attempt to grab user pref, if not resorts to default style
         */
-        MINIMAL();
+        VERBOSE_INVERTED();
 
         AddNote();
         CheckFailure();
         String bodyText = BuildBody();
+
         return DiscordMessageBuilder(bodyText);
     }
 

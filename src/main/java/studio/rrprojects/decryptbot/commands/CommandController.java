@@ -25,6 +25,7 @@ public class CommandController {
         basicCommands.add(new PingCommand());
         basicCommands.add(new RollCommand());
         basicCommands.add(new RuleCommand());
+        basicCommands.add(new CharacterRepo());
 
         for (Command command : basicCommands) {
             command.Initialize();

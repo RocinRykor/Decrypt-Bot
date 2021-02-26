@@ -8,10 +8,10 @@ public class MessageUtils {
         destination.sendMessage(message).queue();
     }
 
-    public static String BlockText(String input, String type) {
+    public static String BlockText(String input, String markdownType) {
         String blockType = "";
-        if (type != null) {
-            blockType = type;
+        if (markdownType != null) {
+            blockType = markdownType;
         }
 
         return "```" + blockType + "\n" + input

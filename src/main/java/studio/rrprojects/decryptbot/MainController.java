@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.discord.BotListener;
+import studio.rrprojects.decryptbot.gui.CharacterAddGUI;
 import studio.rrprojects.decryptbot.gui.RulesGui;
 
 import javax.security.auth.login.LoginException;
@@ -37,6 +38,7 @@ public class MainController {
         jda.addEventListener(botListener);
 
         //RulesGui rulesGui = new RulesGui("Rules GUI v1", this);
+        //CharacterAddGUI characterAddGUI = new CharacterAddGUI("Character Add v1", this);
     }
 
     private JDA StartJDA() {
