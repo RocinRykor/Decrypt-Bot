@@ -6,9 +6,9 @@ import org.json.JSONObject;
 import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.CommandContainer;
-import studio.rrprojects.decryptbot.utils.FileUtils;
-import studio.rrprojects.decryptbot.utils.JSONUtils;
-import studio.rrprojects.decryptbot.utils.RollUtils;
+import studio.rrprojects.util_library.FileUtil;
+import studio.rrprojects.util_library.JSONUtil;
+import studio.rrprojects.util_library.MathUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,8 +36,8 @@ public class RuleCommand extends Command {
 
     public RuleCommand() {
         String filePath = MainController.getMainDir() + "JSON" + File.separator + "rules_repo.json";
-        File jsonFile = FileUtils.LoadFile(filePath);
-        rulesObj = JSONUtils.LoadJsonFromFile(jsonFile);
+        File jsonFile = FileUtil.loadFileFromPath(filePath);
+        rulesObj = JSONUtil.loadJsonFromFile(jsonFile);
         listRules = ConvertJsonToArrayList();
     }
 
@@ -56,7 +56,7 @@ public class RuleCommand extends Command {
     public void executeMain(CommandContainer cmd, MessageReceivedEvent event) {
 
         int listSize = listRules.size();
-        int randomNum = RollUtils.getRandomRange(0, listSize - 1);
+        int randomNum = MathUtil.getRandomRange(0, listSize - 1);
 
         RuleObject rule = listRules.get(randomNum); //Get Random
 

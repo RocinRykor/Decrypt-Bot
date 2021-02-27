@@ -2,12 +2,11 @@ package studio.rrprojects.decryptbot.gui;
 
 import org.json.JSONObject;
 import studio.rrprojects.decryptbot.MainController;
-import studio.rrprojects.decryptbot.utils.FileUtils;
-import studio.rrprojects.decryptbot.utils.JSONUtils;
+import studio.rrprojects.util_library.FileUtil;
+import studio.rrprojects.util_library.JSONUtil;
 
 import javax.swing.*;
 import java.io.File;
-import java.util.ArrayList;
 
 public class CharacterAddGUI extends JFrame {
     private final MainController mainController;
@@ -58,7 +57,7 @@ public class CharacterAddGUI extends JFrame {
 
         mainObj.put(name, ruleContents);
 
-        JSONUtils.WriteJsonToFile(jsonFile, mainObj);
+        JSONUtil.WriteJsonToFile(mainObj, jsonFile);
 
         System.out.println("RULES GUI: RULE SUBMITTED!");
     }
@@ -72,8 +71,8 @@ public class CharacterAddGUI extends JFrame {
         }
 
         String jsonFilePath = jsonDirString + "character_repo.json";
-        jsonFile = FileUtils.LoadFile(jsonFilePath);
+        jsonFile = FileUtil.loadFileFromPath(jsonFilePath);
 
-        mainObj = JSONUtils.LoadJsonFromFile(jsonFile);
+        mainObj = JSONUtil.loadJsonFromFile(jsonFile);
     }
 }

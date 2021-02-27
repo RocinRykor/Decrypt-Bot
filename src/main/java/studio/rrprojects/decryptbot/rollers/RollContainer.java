@@ -1,6 +1,7 @@
 package studio.rrprojects.decryptbot.rollers;
 
 import studio.rrprojects.decryptbot.utils.RollUtils;
+import studio.rrprojects.util_library.MathUtil;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class RollContainer {
 
         base = 0;
         for (int i = 0; i < dicePool; i++) {
-            int result = RollUtils.getRandomRange(1, 6);
+            int result = MathUtil.getRandomRange(1, 6);
             listRolls.add(result);
             base += result;
         }

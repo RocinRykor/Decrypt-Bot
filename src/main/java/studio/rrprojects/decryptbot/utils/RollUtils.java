@@ -1,5 +1,7 @@
 package studio.rrprojects.decryptbot.utils;
 
+import studio.rrprojects.util_library.MathUtil;
+
 public class RollUtils {
 
     public static Integer ExplodingSixRoll() {
@@ -7,7 +9,7 @@ public class RollUtils {
         boolean explodingSix = true;
 
          while (explodingSix) {
-             int tmp = getRandomRange(1, 6);
+             int tmp = MathUtil.getRandomRange(1, 6);
              result += tmp;
              if (tmp != 6) {
                  explodingSix = false;
@@ -15,9 +17,5 @@ public class RollUtils {
          }
 
          return result;
-    }
-
-    public static int getRandomRange(int min, int max) {
-        return (int) ((Math.random() * (1 + max-min)) + min);
     }
 }

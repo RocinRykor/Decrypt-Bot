@@ -5,8 +5,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.discord.BotListener;
-import studio.rrprojects.decryptbot.gui.CharacterAddGUI;
-import studio.rrprojects.decryptbot.gui.RulesGui;
+import studio.rrprojects.util_library.FileUtil;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
@@ -15,7 +14,6 @@ public class MainController {
     private final ConfigController configController;
     private final JDA jda;
     private final CommandController commandController;
-    private final BotListener botListener;
     private static String mainDir;
 
     MainController() {
@@ -34,11 +32,8 @@ public class MainController {
         commandController = new CommandController(this);
 
         //Start Listener
-        botListener = new BotListener(commandController);
+        BotListener botListener = new BotListener(commandController);
         jda.addEventListener(botListener);
-
-        //RulesGui rulesGui = new RulesGui("Rules GUI v1", this);
-        //CharacterAddGUI characterAddGUI = new CharacterAddGUI("Character Add v1", this);
     }
 
     private JDA StartJDA() {
