@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.discord.BotListener;
+import studio.rrprojects.decryptbot.gui.ProgramAddGUI;
 import studio.rrprojects.util_library.FileUtil;
 
 import javax.security.auth.login.LoginException;
@@ -34,6 +35,8 @@ public class MainController {
         //Start Listener
         BotListener botListener = new BotListener(commandController);
         jda.addEventListener(botListener);
+
+        //ProgramAddGUI programAddGUI = new ProgramAddGUI("Decking Utility Add", this);
     }
 
     private JDA StartJDA() {

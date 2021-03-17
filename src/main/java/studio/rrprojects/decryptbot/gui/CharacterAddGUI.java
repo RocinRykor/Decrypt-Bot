@@ -49,7 +49,7 @@ public class CharacterAddGUI extends JFrame {
         String creator = textFieldCreator.getText();
         String description = textAreaDescription.getText();
 
-        JSONObject ruleObj = new JSONObject();
+        //JSONObject ruleObj = new JSONObject();
         JSONObject ruleContents = new JSONObject();
 
         ruleContents.put("creator", creator);

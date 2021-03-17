@@ -50,7 +50,6 @@ public class RulesGui extends JFrame {
         String description = CleanupDescription(txtAreaDescription.getText());
         ArrayList<String> tags = ProcessKeywords(txtFieldKeywords.getText());
 
-        JSONObject ruleObj = new JSONObject();
         JSONObject ruleContents = new JSONObject();
 
         ruleContents.put("source", source);
