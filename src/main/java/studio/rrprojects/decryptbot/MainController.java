@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
+import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.discord.BotListener;
 import studio.rrprojects.decryptbot.gui.ProgramAddGUI;
 import studio.rrprojects.util_library.FileUtil;
@@ -15,13 +16,12 @@ public class MainController {
     private final ConfigController configController;
     private final JDA jda;
     private final CommandController commandController;
-    private static String mainDir;
 
     MainController() {
         System.out.println("MAIN CONTROLLER: STARTING!");
 
-        //Set the Directory
-        SetupDirectory();
+        //Create the Main Directory
+        CreateMainDir();
 
         //Grab Configs
         configController = new ConfigController(this);
@@ -39,6 +39,10 @@ public class MainController {
         //ProgramAddGUI programAddGUI = new ProgramAddGUI("Decking Utility Add", this);
     }
 
+    private void CreateMainDir() {
+        FileUtil.CreateDir(FileConstants.HOME_DIR);
+    }
+
     private JDA StartJDA() {
 
         try {
@@ -52,34 +56,8 @@ public class MainController {
         return null;
     }
 
-    private void SetupDirectory() {
-        mainDir = System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Decrypt Bot" + File.separator;
-
-        File mainDirFile = new File(mainDir);
-
-        if (!mainDirFile.exists()) {
-            System.out.println("MAIN CONTROLLER: CREATING MAIN DIRECTORY AT " + mainDir);
-            if (mainDirFile.mkdir()) {
-                System.out.println("MAIN CONTROLLER: MAIN DIRECTORY CREATED SUCCESSFULLY");
-            } else {
-                System.out.println("MAIN CONTROLLER: ERROR: UNABLE TO CREATE MAIN DIRECTORY");
-            }
-        }
-    }
-
     public JDA getJda() {
         return jda;
     }
 
-    public CommandController getCommandController() {
-        return commandController;
-    }
-
-    public static String getMainDir() {
-        return mainDir;
-    }
-
-    public ConfigController getConfigController() {
-        return configController;
-    }
 }

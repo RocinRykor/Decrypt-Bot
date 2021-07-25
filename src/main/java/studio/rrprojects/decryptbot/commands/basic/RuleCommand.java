@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.CommandContainer;
+import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.util_library.FileUtil;
 import studio.rrprojects.util_library.JSONUtil;
 import studio.rrprojects.util_library.MathUtil;
@@ -35,7 +36,7 @@ public class RuleCommand extends Command {
     }
 
     public RuleCommand() {
-        String filePath = MainController.getMainDir() + "JSON" + File.separator + "rules_repo.json";
+        String filePath = FileConstants.JSON_DIR + "rules_repo.json";
         File jsonFile = FileUtil.loadFileFromPath(filePath);
         rulesObj = JSONUtil.loadJsonFromFile(jsonFile);
         listRules = ConvertJsonToArrayList();

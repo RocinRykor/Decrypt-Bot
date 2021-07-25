@@ -2,6 +2,7 @@ package studio.rrprojects.decryptbot.gui;
 
 import org.json.JSONObject;
 import studio.rrprojects.decryptbot.MainController;
+import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.util_library.FileUtil;
 import studio.rrprojects.util_library.JSONUtil;
 
@@ -123,7 +124,7 @@ public class RulesGui extends JFrame {
     }
 
     private void LoadJSONFile() {
-        String jsonDirString = mainController.getMainDir() + "JSON" + File.separator;
+        String jsonDirString = FileConstants.JSON_DIR;
 
         File jsonDir = new File(jsonDirString);
         if (!jsonDir.exists()) {

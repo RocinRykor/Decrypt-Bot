@@ -3,6 +3,7 @@ package studio.rrprojects.decryptbot.commands;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
 import studio.rrprojects.decryptbot.MainController;
+import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
 import studio.rrprojects.util_library.FileUtil;
 import studio.rrprojects.util_library.JSONUtil;
@@ -56,7 +57,7 @@ public class CharacterRepo extends Command {
 
     @Override
     public void Initialize() {
-        String jsonDirString = MainController.getMainDir() + "JSON" + File.separator;
+        String jsonDirString = FileConstants.JSON_DIR + File.separator;
         String jsonFilePath = jsonDirString + "character_repo.json";
 
         characterJson = JSONUtil.loadJsonFromFile(FileUtil.loadFileFromPath(jsonFilePath));

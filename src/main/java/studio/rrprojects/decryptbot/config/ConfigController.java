@@ -1,6 +1,7 @@
 package studio.rrprojects.decryptbot.config;
 
 import studio.rrprojects.decryptbot.MainController;
+import studio.rrprojects.decryptbot.constants.FileConstants;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class ConfigController {
         this.mainController = mainController;
 
         String configFileName = "BotInfo.cfg";
-        String configFilePath = mainController.getMainDir() + configFileName;
+        String configFilePath = FileConstants.HOME_DIR + configFileName;
 
         CreateListConfigOptions();
 
