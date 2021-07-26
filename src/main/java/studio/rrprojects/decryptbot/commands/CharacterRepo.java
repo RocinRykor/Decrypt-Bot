@@ -1,8 +1,7 @@
 package studio.rrprojects.decryptbot.commands;
 
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.json.JSONObject;
-import studio.rrprojects.decryptbot.MainController;
+import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
 import studio.rrprojects.util_library.FileUtil;
@@ -33,7 +32,7 @@ public class CharacterRepo extends Command {
     }
 
     @Override
-    public void executeMain(CommandContainer input, MessageReceivedEvent event) {
+    public void executeMain(CommandContainer input) {
         String message = GetRandomCharacter();
 
         MessageUtils.SendMessage(MessageUtils.BlockText(message, null), event.getChannel());

@@ -39,7 +39,9 @@ public class BotListener extends ListenerAdapter {
         //Check for Prefix
         for (Map.Entry<String, String> prefix: prefixTable.entrySet()) {
             if (messageRaw.startsWith(prefix.getKey())) {
-                commandController.ProcessInput(messageRaw.replace(prefix.getKey(), prefix.getValue()), event);
+                String beheaded = messageRaw.replace(prefix.getKey(), prefix.getValue());
+
+                commandController.ProcessInput(beheaded, event);
             }
         }
 

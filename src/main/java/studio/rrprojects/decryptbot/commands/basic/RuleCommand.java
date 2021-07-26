@@ -1,11 +1,9 @@
 package studio.rrprojects.decryptbot.commands.basic;
 
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.Command;
-import studio.rrprojects.decryptbot.commands.CommandContainer;
+import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.util_library.FileUtil;
 import studio.rrprojects.util_library.JSONUtil;
@@ -54,7 +52,7 @@ public class RuleCommand extends Command {
     }
 
     @Override
-    public void executeMain(CommandContainer cmd, MessageReceivedEvent event) {
+    public void executeMain(CommandContainer cmd) {
 
         int listSize = listRules.size();
         int randomNum = MathUtil.getRandomRange(0, listSize - 1);
@@ -66,7 +64,7 @@ public class RuleCommand extends Command {
                 "Source: " + rule.source +"\n" +
                 "Description: " + rule.description;
 
-        SendMessage(message, event.getChannel());
+        SendBasicMessage(message, event.getChannel());
     }
 
     private class RuleObject {

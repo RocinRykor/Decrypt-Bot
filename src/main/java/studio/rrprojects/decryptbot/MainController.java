@@ -6,11 +6,9 @@ import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.discord.BotListener;
-import studio.rrprojects.decryptbot.gui.ProgramAddGUI;
 import studio.rrprojects.util_library.FileUtil;
 
 import javax.security.auth.login.LoginException;
-import java.io.File;
 
 public class MainController {
     private final ConfigController configController;
@@ -35,8 +33,6 @@ public class MainController {
         //Start Listener
         BotListener botListener = new BotListener(commandController);
         jda.addEventListener(botListener);
-
-        //ProgramAddGUI programAddGUI = new ProgramAddGUI("Decking Utility Add", this);
     }
 
     private void CreateMainDir() {
@@ -44,7 +40,6 @@ public class MainController {
     }
 
     private JDA StartJDA() {
-
         try {
             return JDABuilder.createDefault(configController.getOption("botToken")).build();
         } catch (LoginException e) {

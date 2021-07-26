@@ -2,9 +2,8 @@ package studio.rrprojects.decryptbot.rollers;
 
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import studio.rrprojects.decryptbot.commands.CommandContainer;
+import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
-import studio.rrprojects.decryptbot.utils.MyMessageBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,7 @@ public class ShadowrunRoller {
         rollFormatter = new RollFormatter();
     }
 
-    public void Roll(CommandContainer cmd, MessageReceivedEvent event) {
+    public void Roll(CommandContainer cmd) {
         this.listParameters = cmd.getListParameters();
         this.event = event;
         rollContainer = new RollContainer();
