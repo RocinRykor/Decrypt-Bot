@@ -30,7 +30,7 @@ public class ShadowrunRoller {
 
     public void Roll(CommandContainer cmd) {
         this.listParameters = cmd.getListParameters();
-        this.event = event;
+        this.event = cmd.getEvent();
         rollContainer = new RollContainer();
 
 

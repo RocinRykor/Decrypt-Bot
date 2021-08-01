@@ -1,15 +1,14 @@
 package studio.rrprojects.decryptbot.commands.basic;
 
-import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageHistory;
+import net.dv8tion.jda.api.entities.TextChannel;
 import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.utils.DiscordUtils;
-import studio.rrprojects.decryptbot.utils.MessageUtils;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.Thread.sleep;
 
 public class Delete extends Command {
     @Override

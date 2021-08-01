@@ -8,13 +8,18 @@ import studio.rrprojects.decryptbot.utils.MessageUtils;
 
 public abstract class Command {
     protected CommandContainer cmd;
-    protected MessageReceivedEvent event;
+    private CommandContainer commandContainer;
+    private MessageReceivedEvent event;
 
     public abstract String getName();
     public abstract String getAlias();
     public abstract String getHelpDescription();
 
-    public void executeMain(CommandContainer cmd) {};
+    public void executeMain(CommandContainer cmd) {
+        commandContainer = cmd;
+
+        event = cmd.getEvent();
+    };
     public void executeHelp() { };
 
     public void SendBasicMessage(String message, MessageChannel destination) {
@@ -40,5 +45,13 @@ public abstract class Command {
         author.openPrivateChannel().complete().sendMessage(errorMessage).complete();
 
         LogPermission(this.cmd);
+    }
+
+    public CommandContainer getCommandContainer() {
+        return commandContainer;
+    }
+
+    public MessageReceivedEvent getEvent() {
+        return event;
     }
 }

@@ -5,7 +5,6 @@ import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.basic.Delete;
 import studio.rrprojects.decryptbot.commands.basic.Flood;
 import studio.rrprojects.decryptbot.commands.basic.RollCommand;
-import studio.rrprojects.decryptbot.commands.basic.RuleCommand;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.commands.response.Ping;
 
@@ -26,8 +25,6 @@ public class CommandController {
         basicCommands = new ArrayList<>();
         basicCommands.add(new Ping());
         basicCommands.add(new RollCommand());
-        basicCommands.add(new RuleCommand());
-        basicCommands.add(new CharacterRepo());
         basicCommands.add(new Delete());
         basicCommands.add(new Flood());
 
