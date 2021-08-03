@@ -6,6 +6,7 @@ import studio.rrprojects.decryptbot.commands.basic.Delete;
 import studio.rrprojects.decryptbot.commands.basic.Flood;
 import studio.rrprojects.decryptbot.commands.basic.RollCommand;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
+import studio.rrprojects.decryptbot.commands.basic.GenerateGroup;
 import studio.rrprojects.decryptbot.commands.response.Ping;
 
 import java.util.ArrayList;
@@ -27,16 +28,13 @@ public class CommandController {
         basicCommands.add(new RollCommand());
         basicCommands.add(new Delete());
         basicCommands.add(new Flood());
+        basicCommands.add(new GenerateGroup());
 
         for (Command command : basicCommands) {
             command.Initialize();
         }
 
         System.out.println("COMMAND CONTROLLER: " + basicCommands.size() + " COMMANDS LOADED SUCCESSFULLY");
-    }
-
-    public MainController getMainController() {
-        return mainController;
     }
 
     public void ProcessInput(String input, MessageReceivedEvent event) {

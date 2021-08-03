@@ -4,6 +4,15 @@ import studio.rrprojects.util_library.MathUtil;
 
 public class RollUtils {
 
+    public static Integer StandardRoll(int diceNumber, int dieSides) {
+        int result = 0;
+        for (int i = 0; i < diceNumber; i++) {
+            result += MathUtil.getRandomRange(1, dieSides);
+        }
+
+        return result;
+    }
+
     public static Integer ExplodingSixRoll() {
         int result  = 0;
         boolean explodingSix = true;
