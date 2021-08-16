@@ -6,6 +6,7 @@ import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.discord.BotListener;
+import studio.rrprojects.util_library.DebugUtils;
 import studio.rrprojects.util_library.FileUtil;
 
 import javax.security.auth.login.LoginException;
@@ -13,22 +14,21 @@ import javax.security.auth.login.LoginException;
 public class MainController {
     private final ConfigController configController;
     private final JDA jda;
-    private final CommandController commandController;
 
     MainController() {
-        System.out.println("MAIN CONTROLLER: STARTING!");
+        DebugUtils.ProgressNormalMsg("MAIN CONTROLLER: STARTING!");
 
         //Create the Main Directory
         CreateMainDir();
 
         //Grab Configs
-        configController = new ConfigController(this);
+        configController = new ConfigController();
 
         //Launch JDA
         jda = StartJDA();
 
         //Initialize Commands
-        commandController = new CommandController(this);
+        CommandController commandController = new CommandController();
 
         //Start Listener
         BotListener botListener = new BotListener(commandController);
@@ -44,7 +44,7 @@ public class MainController {
             return JDABuilder.createDefault(configController.getOption("botToken")).build();
         } catch (LoginException e) {
             e.printStackTrace();
-            System.out.println("MAIN CONTROLLER: ERROR - UNABLE TO LOGIN, PLEASE CHECK CONFIG FILE");
+            DebugUtils.ErrorMsg("MAIN CONTROLLER: ERROR - UNABLE TO LOGIN, PLEASE CHECK CONFIG FILE");
             System.exit(0);
         }
 

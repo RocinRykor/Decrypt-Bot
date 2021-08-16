@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
+import studio.rrprojects.util_library.DebugUtils;
 
 public abstract class Command {
     protected CommandContainer cmd;
@@ -15,9 +16,12 @@ public abstract class Command {
     public abstract String getAlias();
     public abstract String getHelpDescription();
 
+    public Command() {
+        DebugUtils.CautionMsg("NEW COMMAND LOADED: " + getName());
+    }
+
     public void executeMain(CommandContainer cmd) {
         commandContainer = cmd;
-
         event = cmd.getEvent();
     };
     public void executeHelp() { };

@@ -1,24 +1,24 @@
 package studio.rrprojects.decryptbot.config;
 
-import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.constants.FileConstants;
+import studio.rrprojects.util_library.DebugUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 
 public class ConfigController {
-    private final MainController mainController;
     private final Properties prop;
     private final File fileConfig;
     private ArrayList<ConfigOption> listConfigOptions;
-    private FileReader reader;
 
-    public ConfigController(MainController mainController) {
-        this.mainController = mainController;
+    String configFileName = "BotInfo.cfg";
+    String configFilePath = FileConstants.HOME_DIR + configFileName;
 
-        String configFileName = "BotInfo.cfg";
-        String configFilePath = FileConstants.HOME_DIR + configFileName;
+    public ConfigController() {
 
         CreateListConfigOptions();
 
@@ -31,10 +31,10 @@ public class ConfigController {
     }
 
     private void LoadConfigFile() {
-        System.out.println("CONFIG CONTROLLER: LOADING CONFIG FILE");
+        DebugUtils.ProgressNormalMsg("CONFIG CONTROLLER: LOADING CONFIG FILE");
 
         try {
-            reader = new FileReader(fileConfig);
+            FileReader reader = new FileReader(fileConfig);
             prop.load(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,15 +44,15 @@ public class ConfigController {
             option.setCurrentValue(prop.getProperty(option.key));
         }
 
-        System.out.println("CONFIG CONTROLLER: CONFIG FILE LOADED");
+        DebugUtils.ProgressNormalMsg("CONFIG CONTROLLER: CONFIG FILE LOADED");
     }
 
     private void CheckAndCreateFile() {
         if (!fileConfig.exists()) {
-            System.out.println("CONFIG CONTROLLER: CREATING CONFIG FILE");
+            DebugUtils.ProgressNormalMsg("CONFIG CONTROLLER: CREATING CONFIG FILE");
             try {
                 if (fileConfig.createNewFile()) {
-                    System.out.println("CONFIG CONTROLLER: CONFIG FILE CREATED SUCCESSFULLY");
+                    DebugUtils.CautionMsg("CONFIG CONTROLLER: CONFIG FILE CREATED SUCCESSFULLY");
                     PopulateNewFile();
                 }
             } catch (IOException e) {
@@ -87,7 +87,7 @@ public class ConfigController {
         return null;
     }
 
-    private class ConfigOption {
+    private static class ConfigOption {
         private final String key;
         private final String defaultValue;
         private String currentValue;

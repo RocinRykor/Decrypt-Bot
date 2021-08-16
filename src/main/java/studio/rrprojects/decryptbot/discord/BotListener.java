@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import studio.rrprojects.decryptbot.commands.CommandController;
+import studio.rrprojects.util_library.DebugUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class BotListener extends ListenerAdapter {
             return;
         }
 
-        System.out.println("RECEIVED A MESSAGE!");
+        DebugUtils.UnknownMsg("RECEIVED A MESSAGE!");
 
         String messageRaw = event.getMessage().getContentRaw();
 
