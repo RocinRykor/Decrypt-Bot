@@ -2,11 +2,9 @@
 
 cd $(dirname ${BASH_SOURCE[0]})
 
-git pull
-
 if [[ -n $(git status -s) ]]; then
-    echo "Changes found. Pushing changes..."
-    git add -A && git commit -m 'AUTOMATIC UPDATE' && git push
+    echo "Changes found. Pulling changes..."
+    git pull
 else
-    echo "No changes found. Skip pushing."
+    echo "No changes found. Skipping."
 fi
