@@ -76,6 +76,7 @@ public class ConfigController {
     private void CreateListConfigOptions() {
         listConfigOptions = new ArrayList<>();
         listConfigOptions.add(new ConfigOption("botToken", "CHANGE_THIS_VALUE_BEFORE_STARTING"));
+        listConfigOptions.add(new ConfigOption("isTesting", "false"));
     }
 
     public String getOption(String searchTerm) {

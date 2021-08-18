@@ -12,14 +12,13 @@ import java.util.Map;
 
 public class BotListener extends ListenerAdapter {
     private CommandController commandController;
-    private HashMap<String, String> prefixTable;
+    private HashMap<String, String> prefixTable = new HashMap<>();
 
     public BotListener() {
         InitializePrefixTable();
     }
 
     private void InitializePrefixTable() {
-        prefixTable = new HashMap<>();
         prefixTable.put("d.", "");
         prefixTable.put("D.", "");
         prefixTable.put("Decrypt, ", "");
@@ -60,5 +59,10 @@ public class BotListener extends ListenerAdapter {
 
     public CommandController getCommandController() {
         return commandController;
+    }
+
+    public void setTestingMode(boolean isTesting) {
+        prefixTable.clear();
+        prefixTable.put("~", "");
     }
 }
