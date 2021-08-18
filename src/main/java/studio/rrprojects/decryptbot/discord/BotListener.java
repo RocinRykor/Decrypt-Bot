@@ -61,7 +61,7 @@ public class BotListener extends ListenerAdapter {
         return commandController;
     }
 
-    public void setTestingMode(boolean isTesting) {
+    public void setTestingMode() {
         prefixTable.clear();
         prefixTable.put("~", "");
     }

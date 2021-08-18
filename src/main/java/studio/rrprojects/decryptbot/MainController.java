@@ -33,7 +33,11 @@ public class MainController {
         //Start Listener
         BotListener botListener = new BotListener();
         boolean isTesting = Boolean.parseBoolean(configController.getOption("isTesting"));
-        botListener.setTestingMode(isTesting);
+
+        if (isTesting) {
+            botListener.setTestingMode();
+        }
+
         botListener.setCommandController(commandController);
         jda.addEventListener(botListener);
     }
