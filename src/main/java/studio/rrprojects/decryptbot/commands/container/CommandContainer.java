@@ -7,7 +7,6 @@ import java.util.Arrays;
 
 public class CommandContainer {
     //Input Variables
-
     String rawInput;
     MessageReceivedEvent event;
 

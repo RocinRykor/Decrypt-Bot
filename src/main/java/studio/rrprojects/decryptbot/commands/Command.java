@@ -23,8 +23,14 @@ public abstract class Command {
     public void executeMain(CommandContainer cmd) {
         commandContainer = cmd;
         event = cmd.getEvent();
+
+        DebugUtils.CautionMsg("EXECUTING COMMAND: " + cmd.getPrimaryCommand());
+        DebugUtils.CautionMsg("PARAMETERS: " + cmd.getListParameters().toString());
+        DebugUtils.CautionMsg("ARGUEMENTS: " + cmd.getListArgs().toString());
     };
-    public void executeHelp() { };
+
+    public void executeHelp() {
+    };
 
     public void SendBasicMessage(String message, MessageChannel destination) {
         MessageUtils.SendMessage(message, destination);

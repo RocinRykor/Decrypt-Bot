@@ -26,6 +26,7 @@ public abstract class ResponseCommand extends Command {
 
     @Override
     public void executeMain(CommandContainer cmd) {
+        super.executeMain(cmd);
         MessageChannel destination = cmd.getEvent().getChannel();
         MessageUtils.SendMessage(getResponse(), destination);
     }

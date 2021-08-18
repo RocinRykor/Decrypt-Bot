@@ -79,12 +79,23 @@ public class ShadowrunRoller {
     }
 
     private void OutputOpenResults(RollContainer rollContainer) {
+        String author = event.getAuthor().getName();
+        // getAuthorPref
+
+        rollContainer.setAuthor(author);
+
+        MessageEmbed message = rollFormatter.Parse(rollContainer);
+
+        MessageUtils.SendEmbedMessage(message, event.getChannel());
+
+        /*
         String message = "Roll By: " + event.getAuthor().getName() + "\n" +
                 "Dice Pool: " + rollContainer.getDicePool() + ", Target: " + "Open Test" + "\n" +
                 "Rolls: " + rollContainer.getListRolls().toString() + "\n" +
                 "Target Number: " + rollContainer.getTargetNumber();
 
         MessageUtils.SendMessage(message, event.getChannel());
+         */
     }
 
     private void InitiativeTest() {
@@ -103,6 +114,16 @@ public class ShadowrunRoller {
     }
 
     private void OutputInitiativeResults() {
+        String author = event.getAuthor().getName();
+        // getAuthorPref
+
+        rollContainer.setAuthor(author);
+
+        MessageEmbed message = rollFormatter.Parse(rollContainer);
+
+        MessageUtils.SendEmbedMessage(message, event.getChannel());
+
+        /*
         String message = "Roll By: " + event.getAuthor().getName() + "\n" +
                 "Dice Pool: " + rollContainer.getDicePool() + "\n" +
                 "Rolls: " + rollContainer.getListRolls().toString() + "\n" +
@@ -110,6 +131,8 @@ public class ShadowrunRoller {
                 "Total Initiative: " + rollContainer.getTotal();
 
         MessageUtils.SendMessage(message, event.getChannel());
+         */
+
     }
 
     private void ProcessSecondaryParameter() {
@@ -117,10 +140,10 @@ public class ShadowrunRoller {
         if (listParameters.size() < 2) {
             targetNumber = defaultTargetNumber;
             SetTestType("Success");
-        } else if (listParameters.get(1).equalsIgnoreCase("i")){
+        } else if (listParameters.get(1).equalsIgnoreCase("i") || listParameters.get(1).equalsIgnoreCase("-i")){
             SetTestType("Initiative");
         }
-        else if (listParameters.get(1).equalsIgnoreCase("o")){
+        else if (listParameters.get(1).equalsIgnoreCase("o") || listParameters.get(1).equalsIgnoreCase("-o")){
             SetTestType("Open");
         } else {
             try {

@@ -3,6 +3,7 @@ package studio.rrprojects.decryptbot.rollers;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import studio.rrprojects.decryptbot.utils.MyMessageBuilder;
+import studio.rrprojects.util_library.DebugUtils;
 
 public class RollFormatter {
 
@@ -44,7 +45,26 @@ public class RollFormatter {
         builder.addWithUnderLine("Dice Pool: " + rollContainer.getDicePool());
     }
 
+    public void VERBOSE_INVERTED_OPEN() {
+        builder.addWithUnderLine("<Target: " + rollContainer.getTargetNumber() + " >");
+        builder.addBlankLine();
+        builder.add("> Results: " + rollContainer.getListRolls().toString());
+        builder.addBlankLine();
+        builder.addWithUnderLine("Dice Pool: " + rollContainer.getDicePool());
+    }
+
+    public void VERBOSE_INVERTED_INITIATIVE() {
+        builder.addWithUnderLine("<Initiative: " + rollContainer.getTotal() + " >");
+        builder.addBlankLine();
+        builder.add("> Results: " + rollContainer.getListRolls().toString());
+        builder.add("> Base Roll: " + rollContainer.getBase() + " + Modifier: " + rollContainer.getModifier());
+        builder.addBlankLine();
+        builder.addWithUnderLine("Dice Pool: " + rollContainer.getDicePool());
+    }
+
     public MessageEmbed Parse(RollContainer rollContainer) {
+        DebugUtils.VaraibleMsg(rollContainer.toString());
+
         builder = new MyMessageBuilder();
         this.rollContainer = rollContainer;
 
@@ -52,7 +72,18 @@ public class RollFormatter {
         This is the only spot that will change depending on formatting
         Will attempt to grab user pref, if not resorts to default style
         */
-        VERBOSE_INVERTED();
+
+        if (rollContainer.getRollType() == 2) {
+            //OpenTest
+            VERBOSE_INVERTED_OPEN();
+        } else if (rollContainer.getRollType() == 3) {
+            //Initiative
+            VERBOSE_INVERTED_INITIATIVE();
+        } else {
+            //Success Test or Default
+            VERBOSE_INVERTED();
+        }
+
 
         AddNote();
         CheckFailure();

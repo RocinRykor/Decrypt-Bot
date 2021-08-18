@@ -38,8 +38,9 @@ public class CommandController {
         CommandContainer cmd = new CommandContainer(input, event);
 
         for (Command command: commandList) {
-            if (cmd.getPrimaryCommand().equalsIgnoreCase(command.getName())) {
+            if (cmd.getPrimaryCommand().equalsIgnoreCase(command.getName()) || cmd.getPrimaryCommand().equalsIgnoreCase(command.getAlias())) {
                 command.executeMain(cmd);
+                return;
             }
         }
     }

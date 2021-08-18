@@ -1,5 +1,6 @@
 package studio.rrprojects.decryptbot.discord;
 
+import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -10,11 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BotListener extends ListenerAdapter {
-    private final CommandController commandController;
+    private CommandController commandController;
     private HashMap<String, String> prefixTable;
 
-    public BotListener(CommandController commandController) {
-        this.commandController = commandController;
+    public BotListener() {
         InitializePrefixTable();
     }
 
@@ -48,4 +48,17 @@ public class BotListener extends ListenerAdapter {
 
     }
 
+    @Override
+    public void onReady(@NotNull ReadyEvent event) {
+        super.onReady(event);
+        DebugUtils.ProgressNormalMsg("BOT READY!");
+    }
+
+    public void setCommandController(CommandController commandController) {
+        this.commandController = commandController;
+    }
+
+    public CommandController getCommandController() {
+        return commandController;
+    }
 }

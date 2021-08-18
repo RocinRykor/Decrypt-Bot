@@ -175,4 +175,22 @@ public class RollContainer {
             return new Color(0, (int) greenScale, 0);
         }
     }
+
+    @Override
+    public String toString() {
+        return "RollContainer{" +
+                "author='" + author + '\'' +
+                ", listRolls=" + listRolls +
+                ", dicePool=" + dicePool +
+                ", targetNumber=" + targetNumber +
+                ", countHits=" + countHits +
+                ", countsMisses=" + countsMisses +
+                ", modifier=" + modifier +
+                ", total=" + total +
+                ", base=" + base +
+                ", note='" + note + '\'' +
+                ", rollType=" + rollType +
+                ", successLevel=" + successLevel +
+                '}';
+    }
 }

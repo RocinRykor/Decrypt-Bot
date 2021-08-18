@@ -31,7 +31,8 @@ public class MainController {
         CommandController commandController = new CommandController();
 
         //Start Listener
-        BotListener botListener = new BotListener(commandController);
+        BotListener botListener = new BotListener();
+        botListener.setCommandController(commandController);
         jda.addEventListener(botListener);
     }
 
