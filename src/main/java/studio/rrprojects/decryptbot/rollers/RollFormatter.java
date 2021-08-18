@@ -94,7 +94,7 @@ public class RollFormatter {
 
     private MessageEmbed DiscordMessageBuilder(String bodyText) {
         EmbedBuilder embedBuilder = new EmbedBuilder();
-        String author = rollContainer.getAuthor();;
+        String author = rollContainer.getAuthor();
         String title = rollContainer.getRollTypeString();
 
         embedBuilder.addField(title + " by: " + author, bodyText, false);

@@ -73,7 +73,7 @@ public class Delete extends Command {
             }
 
             messageList.addAll(messageHistory.getRetrievedHistory());
-            startingMessage = messageList.get(messageList.size() - 1);
+            currentMessage = messageList.get(messageList.size() - 1);
         }
 
         System.out.println("Number of messages collected: " + messageList.size());
