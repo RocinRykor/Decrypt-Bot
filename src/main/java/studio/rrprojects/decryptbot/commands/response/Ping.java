@@ -1,8 +1,5 @@
 package studio.rrprojects.decryptbot.commands.response;
 
-import studio.rrprojects.decryptbot.commands.container.CommandContainer;
-import studio.rrprojects.decryptbot.generators.magical_groups.MagicalGroup;
-
 public class Ping extends ResponseCommand {
     @Override
     public String getName() {

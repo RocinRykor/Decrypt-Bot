@@ -2,7 +2,9 @@
 
 cd $(dirname ${BASH_SOURCE[0]})
 
-if [[ -n $(git status -s) ]]; then
+git remote update
+
+if [[ -n $(git status -uno -s) ]]; then
     echo "Changes found. Pulling changes..."
     git pull
     systemctl restart decrypt.service
