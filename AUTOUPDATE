@@ -5,6 +5,7 @@ cd $(dirname ${BASH_SOURCE[0]})
 if [[ -n $(git status -s) ]]; then
     echo "Changes found. Pulling changes..."
     git pull
+    systemctl restart decrypt.service
 else
     echo "No changes found. Skipping."
 fi
