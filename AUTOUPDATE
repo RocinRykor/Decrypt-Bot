@@ -1,16 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-UPSTREAM=${1:-‘@{u}’}
-LOCAL=$(git rev-parse @)
-REMOTE=$(git rev-parse “$UPSTREAM”)
-BASE=$(git merge-base @ “$UPSTREAM”)
+cd $(dirname ${BASH_SOURCE[0]})
 
-if [ $LOCAL = $REMOTE ]; then
-echo “Up-to-date”
-elif [ $LOCAL = $BASE ]; then
-echo “Need to pull”
-elif [ $REMOTE = $BASE ]; then
-echo “Need to push”
+git fetch origin
+reslog=$(git log HEAD..origin/master --oneline)
+if [[ "${reslog}" != "" ]] ; then
+  git merge origin/master # completing the pull
+  echo "Changes found. Pulling changes..."
+  systemctl restart decrypt.service
 else
-echo “Diverged”
+    echo "No changes found. Skipping."
 fi
