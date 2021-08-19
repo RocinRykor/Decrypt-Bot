@@ -18,6 +18,6 @@ public class Ping extends ResponseCommand {
 
     @Override
     public String getResponse() {
-        return "Oi, Chummer!";
+        return "Message recieved, Chummer!";
     }
 }
