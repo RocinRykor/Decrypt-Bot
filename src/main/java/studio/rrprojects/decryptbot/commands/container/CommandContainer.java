@@ -1,6 +1,7 @@
 package studio.rrprojects.decryptbot.commands.container;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import studio.rrprojects.util_library.DebugUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,5 +88,13 @@ public class CommandContainer {
 
     public String getNotes() {
         return notes;
+    }
+
+    public String getPrimaryParameter() {
+        if (listParameters.size() >= 1) {
+            return listParameters.get(0);
+        }
+
+        return "NONE";
     }
 }

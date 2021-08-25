@@ -7,10 +7,13 @@ import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
 import studio.rrprojects.util_library.DebugUtils;
 
+import java.util.HashMap;
+
 public abstract class Command {
     protected CommandContainer cmd;
     private CommandContainer commandContainer;
     private MessageReceivedEvent event;
+    private HashMap<String, Runnable> subCommandMap = new HashMap<>();
 
     public abstract String getName();
     public abstract String getAlias();
@@ -63,5 +66,32 @@ public abstract class Command {
 
     public MessageReceivedEvent getEvent() {
         return event;
+    }
+
+    public CommandContainer getCmd() {
+        return cmd;
+    }
+
+    public HashMap<String, Runnable> getSubCommandMap() {
+        return subCommandMap;
+    }
+
+    protected boolean subCommandMapContains(String input) {
+        DebugUtils.UnknownMsg("CHECKING SUBCOMMANDS: " + input);
+        DebugUtils.VaraibleMsg("SUBCOMMAND SIZE: " + subCommandMap.size());
+
+        for (String key: subCommandMap.keySet()) {
+            if (key.equalsIgnoreCase(input)) {
+                DebugUtils.VaraibleMsg("MATCH FOUND: " + key);
+                return true;}
+        }
+        return false;
+    }
+
+    protected Runnable searchSubCommands(String input) {
+        for (String key: subCommandMap.keySet()) {
+            if (key.equalsIgnoreCase(input)) {return subCommandMap.get(key);}
+        }
+        return null;
     }
 }
