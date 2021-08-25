@@ -14,18 +14,26 @@
     </properties>
 
     <repositories>
-    <!-- Discord JDA -->
-    <repository>
-        <id>jcenter</id>
-        <name>jcenter-bintray</name>
-        <url>https://jcenter.bintray.com</url>
-    </repository>
 
-    <repository>
-        <id>dv8tion</id>
-        <name>m2-dv8tion</name>
-        <url>https://m2.dv8tion.net/releases</url>
-    </repository>
+        <!-- Discord JDA -->
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter-bintray</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+
+        <!-- Discord Audio Player -->
+        <repository>
+            <id>central</id>
+            <name>bintray</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+
+        <repository>
+            <id>dv8tion</id>
+            <name>m2-dv8tion</name>
+            <url>https://m2.dv8tion.net/releases</url>
+        </repository>
 
     </repositories>
 
@@ -43,11 +51,11 @@
             <version>1.7.25</version>
         </dependency>
 
-        <!-- Minimal JSON -->
+        <!-- Discord Audio Player -->
         <dependency>
-            <groupId>com.eclipsesource.minimal-json</groupId>
-            <artifactId>minimal-json</artifactId>
-            <version>0.9.5</version>
+            <groupId>com.sedmelluq</groupId>
+            <artifactId>lavaplayer</artifactId>
+            <version>1.3.77</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.json/json -->
@@ -55,6 +63,19 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20200518</version>
+        </dependency>
+
+        <!-- Google TTS -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-texttospeech</artifactId>
+            <version>0.101.0-beta</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-speech</artifactId>
+            <version>1.20.0</version>
         </dependency>
 
     </dependencies>
