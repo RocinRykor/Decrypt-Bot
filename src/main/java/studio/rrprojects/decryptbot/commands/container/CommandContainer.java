@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CommandContainer {
+    private String notes = "";
     //Input Variables
     String rawInput;
     MessageReceivedEvent event;
@@ -29,6 +30,12 @@ public class CommandContainer {
             ProcessArguments(input.substring(input.indexOf(argumentPrefix)));
         } else {
             ProcessPrimaryString(input);
+        }
+
+        if (rawInput.contains("\"")) { //Check if beheaded string has a note and if so extract it.
+            int quotationIndex = rawInput.indexOf("\"");
+            String rawNotes = rawInput.substring(quotationIndex);
+            notes = rawNotes.replace("\"", "");
         }
     }
 
@@ -78,4 +85,7 @@ public class CommandContainer {
         return outputMessage;
     }
 
+    public String getNotes() {
+        return notes;
+    }
 }

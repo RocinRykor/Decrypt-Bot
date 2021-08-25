@@ -1,10 +1,7 @@
 package studio.rrprojects.decryptbot.commands;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import studio.rrprojects.decryptbot.commands.basic.Delete;
-import studio.rrprojects.decryptbot.commands.basic.Flood;
-import studio.rrprojects.decryptbot.commands.basic.GenerateGroup;
-import studio.rrprojects.decryptbot.commands.basic.RollCommand;
+import studio.rrprojects.decryptbot.commands.basic.*;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.commands.response.Ping;
 import studio.rrprojects.util_library.DebugUtils;
@@ -26,6 +23,7 @@ public class CommandController {
         commandList.add(new Delete());
         commandList.add(new Flood());
         commandList.add(new GenerateGroup());
+        commandList.add(new Audio());
 
         for (Command command : commandList) {
             command.Initialize();
