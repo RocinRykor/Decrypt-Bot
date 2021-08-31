@@ -1,8 +1,12 @@
 package studio.rrprojects.decryptbot.discord;
 
+import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.components.Button;
 import org.jetbrains.annotations.NotNull;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.util_library.DebugUtils;
@@ -37,7 +41,7 @@ public class BotListener extends ListenerAdapter {
         String messageRaw = event.getMessage().getContentRaw();
 
         //Check for Prefix
-        for (Map.Entry<String, String> prefix: prefixTable.entrySet()) {
+        for (Map.Entry<String, String> prefix : prefixTable.entrySet()) {
             if (messageRaw.startsWith(prefix.getKey())) {
                 String beheaded = messageRaw.replace(prefix.getKey(), prefix.getValue());
 
@@ -64,5 +68,40 @@ public class BotListener extends ListenerAdapter {
     public void setTestingMode() {
         prefixTable.clear();
         prefixTable.put("~", "");
+    }
+
+    @Override
+    public void onSlashCommand(SlashCommandEvent event) {
+        DebugUtils.UnknownMsg("SLASH COMMAND RECIEVED!");
+
+        if (event.getName().equals("hello")) {
+            event.reply("Click the button to say hello")
+                    .addActionRow(
+                            Button.primary("hello", "Click Me"), // Button with only a label
+                            Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
+                    .queue();
+        } else if (event.getName().equals("info")) {
+            event.reply("Click the buttons for more info")
+                    .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                            Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
+                                    .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
+                            Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                    .queue();
+        } else if (event.getName().equals("ping")) return; // make sure we handle the right command
+        long time = System.currentTimeMillis();
+        event.reply("Pong!").setEphemeral(true) // reply or acknowledge
+                .flatMap(v ->
+                        event.getHook().editOriginalFormat("Pong: %d ms", System.currentTimeMillis() - time) // then edit original
+                ).queue(); // Queue both reply and edit
+
+    }
+
+    @Override
+    public void onButtonClick(ButtonClickEvent event) {
+        if (event.getComponentId().equals("hello")) {
+            event.reply("Hello :)").queue(); // send a message in the channel
+        } else if (event.getComponentId().equals("emoji")) {
+            event.editMessage("That button didn't say click me").queue(); // update the message
+        }
     }
 }

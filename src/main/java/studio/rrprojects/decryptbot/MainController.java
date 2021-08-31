@@ -40,6 +40,10 @@ public class MainController {
 
         botListener.setCommandController(commandController);
         jda.addEventListener(botListener);
+        jda.upsertCommand("ping", "Calculate ping of the bot").queue(); // This can take up to 1 hour to show up in the client
+        jda.upsertCommand("hello", "testing slash commands").queue(); // This can take up to 1 hour to show up in the client
+        jda.upsertCommand("info", "testing more slash commands").queue(); // This can take up to 1 hour to show up in the client
+        jda.updateCommands();
     }
 
     private void CreateMainDir() {
