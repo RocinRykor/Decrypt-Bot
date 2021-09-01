@@ -1,11 +1,11 @@
 package studio.rrprojects.decryptbot.audio;
 
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
+import studio.rrprojects.util_library.DebugUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
@@ -80,5 +80,19 @@ public class AudioController {
 
     public void LoadAudio(String path) {
         manager.loadNewTrack(path);
+    }
+
+    public void Speak(String string) {
+        DebugUtils.ProgressNormalMsg("SPEAKING!");
+        
+        OpenConnection();
+        
+        try {
+            LoadAudio(TTSHandler.speak(string));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

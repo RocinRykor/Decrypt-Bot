@@ -73,6 +73,7 @@ public class Audio extends Command {
 
     private void JoinChannel() {
         audioController.OpenConnection();
+        audioController.setVolume(50);
     }
 
     public void setAudioController(AudioController audioController) {

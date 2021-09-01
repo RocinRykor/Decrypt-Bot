@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class CommandController {
     private final ArrayList<Command> commandList = new ArrayList<>();
     private Audio audio;
+    private Speak speak;
 
     public CommandController() {
         InitializeCommands();
@@ -21,6 +22,7 @@ public class CommandController {
         DebugUtils.ProgressNormalMsg("COMMAND CONTROLLER: LOADING COMMANDS");
         // Special Commands //
         audio = new Audio();
+        speak = new Speak();
 
         //Basic List
         commandList.add(new Ping());
@@ -29,6 +31,7 @@ public class CommandController {
         commandList.add(new Flood());
         commandList.add(new GenerateGroup());
         commandList.add(audio);
+        commandList.add(speak);
 
         for (Command command : commandList) {
             command.Initialize();
@@ -49,6 +52,8 @@ public class CommandController {
     }
 
     public void ProcessAudioController(AudioController audioController) {
+
         audio.setAudioController(audioController);
+        speak.setAudioController(audioController);
     }
 }

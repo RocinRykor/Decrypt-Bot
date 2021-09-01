@@ -2,6 +2,7 @@ package studio.rrprojects.decryptbot.audio;
 
 import com.google.cloud.texttospeech.v1.*;
 import com.google.protobuf.ByteString;
+import studio.rrprojects.util_library.DebugUtils;
 
 import java.io.*;
 
@@ -16,6 +17,8 @@ public class TTSHandler {
     }
 
     public static void initSpeechSystem() {
+        DebugUtils.ProgressNormalMsg("INITIALIZING TTS CLIENT");
+
         // Instantiates a client
         try {
             textToSpeechClient = TextToSpeechClient.create();
@@ -75,6 +78,12 @@ public class TTSHandler {
 
         // Perform the text-to-speech request on the text input with the selected voice parameters and
         // audio file type
+
+        DebugUtils.VaraibleMsg("INPUT: " + input);
+        DebugUtils.VaraibleMsg("VOICE: " + voice);
+        DebugUtils.VaraibleMsg("AUDIO CONFIG: " + audioConfig);
+        DebugUtils.VaraibleMsg("TTS CLIENT: " + textToSpeechClient);
+
         SynthesizeSpeechResponse response = textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
 
         // Get the audio contents from the response
