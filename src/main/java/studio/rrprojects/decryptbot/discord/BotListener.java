@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.Button;
 import org.jetbrains.annotations.NotNull;
+import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.util_library.DebugUtils;
 
@@ -15,10 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BotListener extends ListenerAdapter {
+    private final MainController mainController;
     private CommandController commandController;
     private HashMap<String, String> prefixTable = new HashMap<>();
 
-    public BotListener() {
+    public BotListener(MainController mainController) {
+        this.mainController = mainController;
         InitializePrefixTable();
     }
 
@@ -54,7 +57,8 @@ public class BotListener extends ListenerAdapter {
     @Override
     public void onReady(@NotNull ReadyEvent event) {
         super.onReady(event);
-        DebugUtils.ProgressNormalMsg("BOT READY!");
+        DebugUtils.ProgressNormalMsg("BOT READY EVENT RECIEVED!");
+        mainController.ReadyEvent();
     }
 
     public void setCommandController(CommandController commandController) {
