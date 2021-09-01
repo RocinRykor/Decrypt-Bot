@@ -29,7 +29,7 @@ public class TTSHandler {
         // Build the voice request, select the language code ("en-US") and the ssml voice gender
         // ("neutral")
         voice = VoiceSelectionParams.newBuilder()
-                .setName("en-GB-Standard-D") //Specify a voice beyond just language code - Allows selection of Wavenet (Premium) voices over standard ones (I think Wavenet voices are selected automatically)
+                .setName("en-GB-Wavenet-B") //Specify a voice beyond just language code - Allows selection of Wavenet (Premium) voices over standard ones (I think Wavenet voices are selected automatically)
                 .setLanguageCode("en-GB")
                 .setSsmlGender(SsmlVoiceGender.MALE)
                 .build();
