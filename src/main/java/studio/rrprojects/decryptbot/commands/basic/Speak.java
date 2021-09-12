@@ -10,12 +10,12 @@ public class Speak extends Command {
 
     @Override
     public String getName() {
-        return "speak";
+        return "Speak";
     }
 
     @Override
     public String getAlias() {
-        return "say";
+        return "Say";
     }
 
     @Override

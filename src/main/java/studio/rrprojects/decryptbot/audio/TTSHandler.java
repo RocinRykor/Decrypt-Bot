@@ -7,16 +7,16 @@ import studio.rrprojects.util_library.DebugUtils;
 import java.io.*;
 
 public class TTSHandler {
-    static TextToSpeechClient textToSpeechClient;
-    static SynthesisInput input;
-    static VoiceSelectionParams voice;
-    static AudioConfig audioConfig;
+    TextToSpeechClient textToSpeechClient;
+    SynthesisInput input;
+    VoiceSelectionParams voice;
+    AudioConfig audioConfig;
 
     public TTSHandler() {
         initSpeechSystem();
     }
 
-    public static void initSpeechSystem() {
+    public void initSpeechSystem() {
         DebugUtils.ProgressNormalMsg("INITIALIZING TTS CLIENT");
 
         // Instantiates a client
@@ -72,7 +72,7 @@ public class TTSHandler {
 
     }
 
-    public static String speak(String text) throws IOException {
+    public String speak(String text) throws IOException {
         System.out.println("SPEAKING:" + text);
 
 
@@ -109,7 +109,7 @@ public class TTSHandler {
      * Everything below here is the system needed to convert a TTS InputStream to a file so that lavaplayer can handle it
      * */
 
-    public static byte[] inputStreamToByteArray(InputStream inStream) throws IOException {
+    public byte[] inputStreamToByteArray(InputStream inStream) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] buffer = new byte[8192];
         int bytesRead;
@@ -119,7 +119,7 @@ public class TTSHandler {
         return baos.toByteArray();
     }
 
-    public static void byteArrayToFile(byte[] byteArray, String outFilePath) throws IOException{
+    public void byteArrayToFile(byte[] byteArray, String outFilePath) throws IOException{
         FileOutputStream fos = new FileOutputStream(outFilePath);
         fos.write(byteArray);
         fos.close();

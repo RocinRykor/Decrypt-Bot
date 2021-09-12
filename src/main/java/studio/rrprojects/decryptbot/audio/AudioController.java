@@ -16,6 +16,7 @@ public class AudioController {
 
     private final MusicManager manager = new MusicManager();
     private MusicPlayer musicPlayer;
+    private TTSHandler ttsHandler = new TTSHandler();
 
     private Guild guild;
 
@@ -86,7 +87,7 @@ public class AudioController {
         OpenConnection();
         
         try {
-            LoadAudio(TTSHandler.speak(string));
+            LoadAudio(ttsHandler.speak(string));
         } catch (IOException e) {
             e.printStackTrace();
         }
