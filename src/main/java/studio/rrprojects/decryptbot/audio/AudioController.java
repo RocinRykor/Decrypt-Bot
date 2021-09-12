@@ -10,30 +10,28 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class AudioController {
-    String pathERROR = "/Audio/" + "ERROR.mp3";
-    String pathSKIP = "/Audio/" + "FORCE_STOP.wav";
-    String pathJOIN = "/Audio/" + "I_AM_HERE.mp3";
+    //String pathERROR = "/Audio/" + "ERROR.mp3";
+    //String pathSKIP = "/Audio/" + "FORCE_STOP.wav";
+    //String pathJOIN = "/Audio/" + "I_AM_HERE.mp3";
 
     private final MusicManager manager = new MusicManager();
     private MusicPlayer musicPlayer;
-    private final TTSHandler ttsHandler = new TTSHandler();
 
     private Guild guild;
 
     private final int defaultVolume = 50;
 
-    private final File fileERROR;
-    private final File fileJOIN;
-    private final File fileSKIP;
     private VoiceChannel voiceChannel;
 
     public AudioController() {
-        fileERROR = loadFile(pathERROR);
-        fileJOIN = loadFile(pathJOIN);
-        fileSKIP = loadFile(pathSKIP);
+        //fileERROR = loadFile(pathERROR);
+        //fileJOIN = loadFile(pathJOIN);
+        //fileSKIP = loadFile(pathSKIP);
     }
 
     private File loadFile(String path) {
+        //TODO - So this part doesnt quite work becuase it doesn't function outside of the IDE, to do that I need an InputStream
+
         try {
             return new File(Objects.requireNonNull(getClass().getResource(path)).toURI());
         } catch (URISyntaxException e) {
@@ -67,7 +65,7 @@ public class AudioController {
     }
 
     public void SkipTrack() {
-        LoadAudio(fileSKIP.getAbsolutePath());
+        //LoadAudio(fileSKIP); //Can't load a file here to get Absolulte path becuause it needs to be an InputStream
 
         try {
             Thread.sleep(500);
@@ -92,7 +90,6 @@ public class AudioController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 }
