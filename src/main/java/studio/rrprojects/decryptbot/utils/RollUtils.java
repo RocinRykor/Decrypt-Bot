@@ -14,6 +14,7 @@ public class RollUtils {
     }
 
     public static Integer ExplodingSixRoll() {
+        //Keep rolling if you get a six, add all the rolls together
         int result  = 0;
         boolean explodingSix = true;
 

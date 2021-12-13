@@ -31,7 +31,8 @@ public class TTSHandler {
         //TODO Create Voice Profiles
 
         voice = VoiceSelectionParams.newBuilder()
-                .setName("en-US-Wavenet-I") //Specify a voice beyond just language code - Allows selection of Wavenet (Premium) voices over standard ones (I think Wavenet voices are selected automatically)
+                //Specify a voice beyond just language code - Allows selection of Wavenet (Premium) voices over standard ones (I think Wavenet voices are selected automatically)
+                .setName("en-US-Wavenet-I")
                 .setLanguageCode("en-US")
                 .setSsmlGender(SsmlVoiceGender.MALE)
                 .build();
