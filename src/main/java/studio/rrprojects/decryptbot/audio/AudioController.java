@@ -25,6 +25,7 @@ public class AudioController {
     private VoiceChannel voiceChannel;
 
     public AudioController() {
+        DebugUtils.ProgressNormalMsg("STARTING AudioController");
         //fileERROR = loadFile(pathERROR);
         //fileJOIN = loadFile(pathJOIN);
         //fileSKIP = loadFile(pathSKIP);

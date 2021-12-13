@@ -49,7 +49,7 @@ public class MainController {
         jda.addEventListener(botListener);
 
         //Force A Ready Event
-        ReadyEvent();
+        //ReadyEvent();
 
         /*
         Slash Commands

@@ -27,7 +27,9 @@ public class TTSHandler {
         }
 
         // Build the voice request, select the language code ("en-US") and the ssml voice gender
-        // ("neutral")
+
+        //TODO Create Voice Profiles
+
         voice = VoiceSelectionParams.newBuilder()
                 .setName("en-US-Wavenet-I") //Specify a voice beyond just language code - Allows selection of Wavenet (Premium) voices over standard ones (I think Wavenet voices are selected automatically)
                 .setLanguageCode("en-US")
@@ -40,36 +42,6 @@ public class TTSHandler {
                 .setPitch(-9)
                 //.setSpeakingRate(0.8)
                 .build();
-
-		/*
-		 * Shows list of voices
-		 *
-		// Builds the text to speech list voices request
-	    ListVoicesRequest request = ListVoicesRequest.getDefaultInstance();
-
-	    // Performs the list voices request
-	    ListVoicesResponse response = textToSpeechClient.listVoices(request);
-	    List<Voice> voices = response.getVoicesList();
-
-	    for (Voice voice : voices) {
-	      // Display the voice's name. Example: tpc-vocoded
-	      System.out.format("Name: %s\n", voice.getName());
-
-	      // Display the supported language codes for this voice. Example: "en-us"
-	      List<ByteString> languageCodes = voice.getLanguageCodesList().asByteStringList();
-	      for (ByteString languageCode : languageCodes) {
-	        System.out.format("Supported Language: %s\n", languageCode.toStringUtf8());
-	      }
-
-	      // Display the SSML Voice Gender
-	      System.out.format("SSML Voice Gender: %s\n", voice.getSsmlGender());
-
-	      // Display the natural sample rate hertz for this voice. Example: 24000
-	      System.out.format("Natural Sample Rate Hertz: %s\n\n",
-	          voice.getNaturalSampleRateHertz());
-	    }
-	    */
-
     }
 
     public String speak(String text) throws IOException {
