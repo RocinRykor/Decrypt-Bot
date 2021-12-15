@@ -17,22 +17,10 @@ public class AudioListener extends AudioEventAdapter {
         this.player = player;
     }
 
-    public BlockingQueue<AudioTrack> getTracks() {
-        return tracks;
-    }
-
-    public int getTrackSize(){
-        return tracks.size();
-    }
 
     public void nextTrack(){
-        if(tracks.isEmpty()){
-            return;
-        }
-
         player.getAudioPlayer().startTrack(tracks.poll(), false);
     }
-
 
 
     @Override
@@ -41,7 +29,9 @@ public class AudioListener extends AudioEventAdapter {
     }
 
     public void queue(AudioTrack track) {
-        if (!player.getAudioPlayer().startTrack(track, true)) tracks.offer(track);
+        if (!player.getAudioPlayer().startTrack(track, true)) {
+            tracks.offer(track);
+        }
     }
 
 }

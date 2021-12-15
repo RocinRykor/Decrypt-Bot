@@ -65,17 +65,15 @@ public class TTSHandler {
         ByteString audioContents = response.getAudioContent();
 
         // Write the response to the output file.
-
-        try (OutputStream out = new FileOutputStream("output.mp3")) {
+        String outputFile = "output.mp3";
+        try (OutputStream out = new FileOutputStream(outputFile)) {
             out.write(audioContents.toByteArray());
-            System.out.println("Audio content written to file \"output.mp3\"");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Audio content written to file: " + outputFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "output.mp3";
+        return outputFile;
     }
 
     /*
@@ -83,13 +81,13 @@ public class TTSHandler {
      * */
 
     public byte[] inputStreamToByteArray(InputStream inStream) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[8192];
         int bytesRead;
         while ((bytesRead = inStream.read(buffer)) > 0) {
-            baos.write(buffer, 0, bytesRead);
+            byteArrayOutputStream.write(buffer, 0, bytesRead);
         }
-        return baos.toByteArray();
+        return byteArrayOutputStream.toByteArray();
     }
 
     public void byteArrayToFile(byte[] byteArray, String outFilePath) throws IOException{

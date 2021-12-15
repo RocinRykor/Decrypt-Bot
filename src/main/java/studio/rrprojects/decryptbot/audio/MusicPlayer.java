@@ -8,25 +8,15 @@ public class MusicPlayer {
 
     private final AudioPlayer audioPlayer;
     private final AudioListener listener;
-    private final Guild guild;
 
-    public MusicPlayer(AudioPlayer audioPlayer, Guild guild){
+    public MusicPlayer(AudioPlayer audioPlayer){
         this.audioPlayer = audioPlayer;
-        this.guild = guild;
         listener = new AudioListener(this);
         audioPlayer.addListener(listener);
     }
 
     public AudioPlayer getAudioPlayer() {
         return audioPlayer;
-    }
-
-    public Guild getGuild() {
-        return guild;
-    }
-
-    public AudioListener getListener() {
-        return listener;
     }
 
     public AudioPlayerSendHandler getAudioHandler(){

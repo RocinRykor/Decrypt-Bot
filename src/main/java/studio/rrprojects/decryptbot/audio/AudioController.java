@@ -4,19 +4,13 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import studio.rrprojects.util_library.DebugUtils;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Objects;
 
 public class AudioController {
-    //String pathERROR = "/Audio/" + "ERROR.mp3";
-    //String pathSKIP = "/Audio/" + "FORCE_STOP.wav";
-    //String pathJOIN = "/Audio/" + "I_AM_HERE.mp3";
 
     private final MusicManager manager = new MusicManager();
     private MusicPlayer musicPlayer;
-    private TTSHandler ttsHandler = new TTSHandler();
+    private final TTSHandler ttsHandler = new TTSHandler();
 
     private Guild guild;
 
@@ -26,25 +20,6 @@ public class AudioController {
 
     public AudioController() {
         DebugUtils.ProgressNormalMsg("STARTING AudioController");
-        //fileERROR = loadFile(pathERROR);
-        //fileJOIN = loadFile(pathJOIN);
-        //fileSKIP = loadFile(pathSKIP);
-    }
-
-    private File loadFile(String path) {
-        //TODO - So this part doesnt quite work becuase it doesn't function outside of the IDE, to do that I need an InputStream
-
-        try {
-            return new File(Objects.requireNonNull(getClass().getResource(path)).toURI());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public Guild getGuild() {
-        return guild;
     }
 
     public void setGuild(Guild guild) {
@@ -60,6 +35,7 @@ public class AudioController {
 
     public void OpenConnection() {
         guild.getAudioManager().openAudioConnection(voiceChannel);
+        setVolume(defaultVolume);
     }
 
     public void CloseConnection() {
@@ -67,14 +43,6 @@ public class AudioController {
     }
 
     public void SkipTrack() {
-        //LoadAudio(fileSKIP); //Can't load a file here to get Absolulte path becuause it needs to be an InputStream
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         manager.getPlayer(guild).skipTrack();
     }
 
