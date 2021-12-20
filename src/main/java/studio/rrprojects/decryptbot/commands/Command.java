@@ -39,6 +39,10 @@ public abstract class Command {
         MessageUtils.SendMessage(message, destination);
     }
 
+    public void SendBlockMessage(String message, String markdownType, MessageChannel destination) {
+        MessageUtils.SendBlockMessage(message, markdownType, destination);
+    }
+
     public void Initialize() {
     }
 

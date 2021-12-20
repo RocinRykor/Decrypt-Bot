@@ -26,10 +26,10 @@ public class GenerateGroup extends Command {
 
         System.out.println("GENERATING MAGICAL GROUP!");
 
-        genertateNewGroup();
+        generateNewGroup();
     }
 
-    private void genertateNewGroup() {
+    private void generateNewGroup() {
         System.out.println("MAGICAL GROUP: GENERATING NEW GROUP");
 
         String message = " Hey Chummer, I did some digging on the matrix for magical groups. This is one I found and all the info I could dig up on them.\n" +

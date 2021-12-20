@@ -32,6 +32,7 @@ public class CommandController {
         commandList.add(new GenerateGroup());
         commandList.add(audio);
         commandList.add(speak);
+        commandList.add(new RulesCommand());
 
         for (Command command : commandList) {
             command.Initialize();
