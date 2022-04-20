@@ -1,6 +1,5 @@
 package studio.rrprojects.decryptbot.generators.magical_groups;
 
-import studio.rrprojects.decryptbot.utils.MyMessageBuilder;
 import studio.rrprojects.decryptbot.utils.RollUtils;
 import studio.rrprojects.util_library.MathUtil;
 
@@ -14,7 +13,7 @@ public class MagicalGroup {
     private String groupRestrictions;
     private String groupPurpose;
     private ArrayList<Stricture> groupStrictures = new ArrayList<>();
-    private String groupRescources;
+    private String groupResources;
     private final ArrayList<String> listPurposes = new ArrayList<>();
     private final ArrayList<Stricture> listStrictures = new ArrayList<>();
 
@@ -26,7 +25,7 @@ public class MagicalGroup {
     }
 
     private void initStrictureList() {
-        listStrictures.add(new Stricture("Attendence", 1, 4, 3));
+        listStrictures.add(new Stricture("Attendance", 1, 4, 3));
         listStrictures.add(new Stricture("Belief", 1, 6, 5));
         listStrictures.add(new Stricture("Deed", 3, 4, 4));
         listStrictures.add(new Stricture("Exclusive Membership", 2,5,4));
@@ -75,7 +74,7 @@ public class MagicalGroup {
     private void randomResources() {
         int baseValue = roll(2);
 
-        setGroupRescources(ResourceTable(baseValue));
+        setGroupResources(ResourceTable(baseValue));
     }
 
     private String ResourceTable(int baseValue) {
@@ -210,12 +209,12 @@ public class MagicalGroup {
         this.groupStrictures = groupStrictures;
     }
 
-    public String getGroupRescources() {
-        return groupRescources;
+    public String getGroupResources() {
+        return groupResources;
     }
 
-    public void setGroupRescources(String groupRescources) {
-        this.groupRescources = groupRescources;
+    public void setGroupResources(String groupResources) {
+        this.groupResources = groupResources;
     }
 
     @Override
@@ -226,7 +225,7 @@ public class MagicalGroup {
                 ", groupRestrictions='" + groupRestrictions + '\'' +
                 ", groupPurpose='" + groupPurpose + '\'' +
                 ", groupStrictures=" + groupStrictures +
-                ", groupRescources='" + groupRescources + '\'' +
+                ", groupResources='" + groupResources + '\'' +
                 '}';
     }
 
@@ -235,7 +234,7 @@ public class MagicalGroup {
 
         message += "=== " + getGroupName() + " ===\n";
         message += getGroupPurpose() + " group with " + getGroupSize() + " members.\n\n";
-        message += "Resources: " + getGroupRescources() + "\n\n";
+        message += "Resources: " + getGroupResources() + "\n\n";
         message += "Known Restrictions: " + getGroupRestrictions() + "\n\n";
         message += "Known Strictures: " + getGroupStrictures().toString() + "\n\n";
 

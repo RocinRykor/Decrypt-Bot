@@ -53,6 +53,11 @@ public class RulesCommand extends Command {
     public void executeMain(CommandContainer cmd) {
         super.executeMain(cmd);
 
+        if (cmd.getListParameters().isEmpty()) {
+            SendBlockMessage(ListAll(), MarkdownStyles.MD, cmd.getEvent().getChannel());
+            return;
+        }
+
         String primaryArg = cmd.getListParameters().get(0);
 
         if (primaryArg.equalsIgnoreCase("help")) {
@@ -68,7 +73,7 @@ public class RulesCommand extends Command {
         cmd = super.getCommandContainer();
 
         if (cmd.getListParameters().size() < 2) {
-            SendBasicMessage("Sorry Chummer, I need the rule you want to pull up.\n" +
+            SendBasicMessage("Sorry Chummier, I need the rule you want to pull up.\n" +
                     "You can use the list command to pull up all the rules I have on file.", cmd.getEvent().getChannel());
             return;
         }

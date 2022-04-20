@@ -36,7 +36,7 @@ public class Ping extends ResponseCommand {
         }
          */
 
-        testFunction(cmd);
+        //testFunction(cmd);
     }
 
     @Override
