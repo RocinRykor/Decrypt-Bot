@@ -1,12 +1,8 @@
 package studio.rrprojects.decryptbot.discord;
 
-import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.ReadyEvent;
-import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.components.Button;
 import org.jetbrains.annotations.NotNull;
 import studio.rrprojects.decryptbot.MainController;
 import studio.rrprojects.decryptbot.commands.CommandController;
@@ -74,9 +70,11 @@ public class BotListener extends ListenerAdapter {
         prefixTable.put("~", "");
     }
 
+    /* - Slash Commands (Something's Not Working Here)
+
     @Override
     public void onSlashCommand(SlashCommandEvent event) {
-        DebugUtils.UnknownMsg("SLASH COMMAND RECIEVED!");
+        DebugUtils.UnknownMsg("SLASH COMMAND RECEIVED!");
 
         if (event.getName().equals("hello")) {
             event.reply("Click the button to say hello")
@@ -108,4 +106,6 @@ public class BotListener extends ListenerAdapter {
             event.editMessage("That button didn't say click me").queue(); // update the message
         }
     }
+
+     */
 }
