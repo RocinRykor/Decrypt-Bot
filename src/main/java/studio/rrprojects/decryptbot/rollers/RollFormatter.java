@@ -63,7 +63,7 @@ public class RollFormatter {
     }
 
     public MessageEmbed Parse(RollContainer rollContainer) {
-        DebugUtils.VaraibleMsg(rollContainer.toString());
+        DebugUtils.VariableMsg(rollContainer.toString());
 
         builder = new MyMessageBuilder();
         this.rollContainer = rollContainer;

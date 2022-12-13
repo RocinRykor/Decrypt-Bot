@@ -38,7 +38,7 @@ public class CommandController {
             command.Initialize();
         }
 
-        DebugUtils.VaraibleMsg("Total Commands Loaded: " + commandList.size());
+        DebugUtils.VariableMsg("Total Commands Loaded: " + commandList.size());
     }
 
     public void ProcessInput(String input, MessageReceivedEvent event) {

@@ -82,11 +82,11 @@ public abstract class Command {
 
     protected boolean subCommandMapContains(String input) {
         DebugUtils.UnknownMsg("CHECKING SUBCOMMANDS: " + input);
-        DebugUtils.VaraibleMsg("SUBCOMMAND SIZE: " + subCommandMap.size());
+        DebugUtils.VariableMsg("SUBCOMMAND SIZE: " + subCommandMap.size());
 
         for (String key: subCommandMap.keySet()) {
             if (key.equalsIgnoreCase(input)) {
-                DebugUtils.VaraibleMsg("MATCH FOUND: " + key);
+                DebugUtils.VariableMsg("MATCH FOUND: " + key);
                 return true;}
         }
         return false;

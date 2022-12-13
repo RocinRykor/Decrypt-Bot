@@ -34,7 +34,7 @@ public class Speak extends Command {
 
         String notes = cmd.getNotes();
 
-        DebugUtils.VaraibleMsg("Trying to speak: " + notes);
+        DebugUtils.VariableMsg("Trying to speak: " + notes);
 
         audioController.Speak(notes);
     }

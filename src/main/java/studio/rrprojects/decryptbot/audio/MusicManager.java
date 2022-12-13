@@ -41,7 +41,7 @@ public class MusicManager {
             @Override
             public void trackLoaded(AudioTrack audioTrack) {
                 player.playTrack(audioTrack);
-                DebugUtils.VaraibleMsg("TRACK LOADED: " + audioTrack.getInfo());
+                DebugUtils.VariableMsg("TRACK LOADED: " + audioTrack.getInfo());
             }
 
             @Override
@@ -52,7 +52,7 @@ public class MusicManager {
                     player.playTrack(track);
                 }
 
-                DebugUtils.VaraibleMsg("PLAYLIST LOADED: " + playlist.getName());
+                DebugUtils.VariableMsg("PLAYLIST LOADED: " + playlist.getName());
             }
 
             @Override

@@ -28,4 +28,14 @@ public class RollUtils {
 
          return result;
     }
+
+    public static Integer simpleSuccessTest(int dicePool, int targetNumber){
+        int hitCount = 0;
+        for (int i = 0; i < dicePool; i++) {
+            if (ExplodingSixRoll() >= targetNumber) {
+                hitCount += 1;
+            }
+        }
+        return hitCount;
+    }
 }

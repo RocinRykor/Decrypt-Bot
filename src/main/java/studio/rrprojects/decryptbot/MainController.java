@@ -7,6 +7,7 @@ import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.discord.BotListener;
+import studio.rrprojects.decryptbot.gui.RulesGui;
 import studio.rrprojects.util_library.DebugUtils;
 import studio.rrprojects.util_library.FileUtil;
 
@@ -47,6 +48,8 @@ public class MainController {
 
         botListener.setCommandController(commandController);
         jda.addEventListener(botListener);
+
+        //RulesGui rulesGui = new RulesGui("Rules", this);
 
     }
 

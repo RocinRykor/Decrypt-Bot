@@ -54,10 +54,10 @@ public class TTSHandler {
         // Perform the text-to-speech request on the text input with the selected voice parameters and
         // audio file type
 
-        DebugUtils.VaraibleMsg("INPUT: " + input);
-        DebugUtils.VaraibleMsg("VOICE: " + voice);
-        DebugUtils.VaraibleMsg("AUDIO CONFIG: " + audioConfig);
-        DebugUtils.VaraibleMsg("TTS CLIENT: " + textToSpeechClient);
+        DebugUtils.VariableMsg("INPUT: " + input);
+        DebugUtils.VariableMsg("VOICE: " + voice);
+        DebugUtils.VariableMsg("AUDIO CONFIG: " + audioConfig);
+        DebugUtils.VariableMsg("TTS CLIENT: " + textToSpeechClient);
 
         SynthesizeSpeechResponse response = textToSpeechClient.synthesizeSpeech(input, voice, audioConfig);
 

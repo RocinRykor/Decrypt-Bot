@@ -46,7 +46,7 @@ public class RulesCommand extends Command {
 
         //Collections.sort(listRules);
 
-        DebugUtils.VaraibleMsg("Files in Rules Directory: " + listRules.toString());
+        DebugUtils.VariableMsg("Files in Rules Directory: " + listRules.toString());
     }
 
     @Override
@@ -83,7 +83,7 @@ public class RulesCommand extends Command {
         String keyParameter = cmd.getListParameters().get(1);
         String searchTerms = raw.substring(raw.indexOf(keyParameter));
 
-        DebugUtils.VaraibleMsg("Rule Search Terms: " + searchTerms);
+        DebugUtils.VariableMsg("Rule Search Terms: " + searchTerms);
 
         RuleObject selectedRule = GetRule(searchTerms);
 

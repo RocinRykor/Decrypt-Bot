@@ -4,6 +4,7 @@ import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.constants.MarkdownStyles;
 import studio.rrprojects.decryptbot.generators.matrix.MatrixHost;
 import studio.rrprojects.decryptbot.generators.matrix.SecuritySheaf;
+import studio.rrprojects.decryptbot.rollers.LifeLeft;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
 import studio.rrprojects.util_library.DebugUtils;
 
@@ -62,7 +63,10 @@ public class Ping extends ResponseCommand {
         //MessageUtils.SendMessage(matrixHost.GenerateHost("Hard"), cmd.getEvent().getChannel());
         //MessageUtils.SendMessage(matrixHost.GenerateHost("Unbreakable"), cmd.getEvent().getChannel());
 
-        securitySheaf.generateSheaf(1, 7, false);
+        //securitySheaf.generateSheaf(1, 7, false);
+
+        LifeLeft lifeLeft = new LifeLeft();
+        lifeLeft.stressTest(10000);
 
         DebugUtils.CautionMsg("TEST SUCCESS!");
     }

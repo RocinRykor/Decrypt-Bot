@@ -65,20 +65,27 @@ public class RulesGui extends JFrame {
     }
 
     private String CleanupDescription(String input) {
-        String doubleLineBreakPlaceHolder = "=!="; //Something absurd that wont show in any valid description
+        String doubleLineBreakPlaceHolder = "=!="; //Something absurd that won't show in any valid description
+        String naturalLineBreakPlaceHolder = "=+=";
         String processedString = input;
 
         //First replace double line breaks with my placeholder
         processedString = processedString.replaceAll("\n\n", doubleLineBreakPlaceHolder);
 
+        //Remove natural line breaks (line break at the end of a sentence)
+        processedString = processedString.replaceAll(".\n", naturalLineBreakPlaceHolder);
+
         //Remove all line breaks with a space
         processedString = processedString.replaceAll("\n", " ");
 
-        //then removed the mid word hyphen from line breaks in the middle of large words
+        //then removed the mid-word hyphen from line breaks in the middle of large words
         processedString = processedString.replaceAll("- ", "");
 
         //cleanup by replacing my placeholder with the double line break
         processedString = processedString.replaceAll(doubleLineBreakPlaceHolder, "\n\n");
+
+        //and replace natural line breaks
+        processedString = processedString.replaceAll(naturalLineBreakPlaceHolder, ".\n");
 
         return processedString;
     }
@@ -136,4 +143,5 @@ public class RulesGui extends JFrame {
 
         mainObj = JSONUtil.loadJsonFromFile(jsonFile);
     }
+
 }

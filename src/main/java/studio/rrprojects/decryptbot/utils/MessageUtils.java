@@ -37,13 +37,13 @@ public class MessageUtils {
 
         ArrayList<String> messageChunks = new ArrayList<>();
         String remainingMessage = message;
-        DebugUtils.VaraibleMsg("Remaining Message: " + remainingMessage);
+        DebugUtils.VariableMsg("Remaining Message: " + remainingMessage);
 
         while (remainingMessage.length() > 0) {
 
             if (remainingMessage.length() >= messageLimit) {
                 String rawChunk = remainingMessage.substring(0, messageLimit);
-                DebugUtils.VaraibleMsg("Raw Chunk: " + rawChunk);
+                DebugUtils.VariableMsg("Raw Chunk: " + rawChunk);
 
                 //First try line break
                 int lastIndex = rawChunk.lastIndexOf("\n");
@@ -67,7 +67,7 @@ public class MessageUtils {
                 //Note to Self: TODO May try a switch case
 
                 String refinedChunk = rawChunk.substring(0, lastIndex + 1);
-                DebugUtils.VaraibleMsg("Refined Chunk: " + refinedChunk);
+                DebugUtils.VariableMsg("Refined Chunk: " + refinedChunk);
 
                 messageChunks.add(refinedChunk);
                 remainingMessage = remainingMessage.substring(refinedChunk.length()).trim();
@@ -78,7 +78,7 @@ public class MessageUtils {
 
         }
 
-        DebugUtils.VaraibleMsg("Total Number of Messages: " + messageChunks.size());
+        DebugUtils.VariableMsg("Total Number of Messages: " + messageChunks.size());
         return messageChunks;
     }
 
