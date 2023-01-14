@@ -33,6 +33,7 @@ public class CommandController {
         commandList.add(audio);
         commandList.add(speak);
         commandList.add(new RulesCommand());
+        commandList.add(new SiteConnect());
 
         for (Command command : commandList) {
             command.Initialize();
