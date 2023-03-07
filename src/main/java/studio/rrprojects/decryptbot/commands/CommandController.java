@@ -27,12 +27,14 @@ public class CommandController {
         //Basic List
         commandList.add(new Ping());
         commandList.add(new RollCommand());
+        commandList.add(new AssencingTest());
         commandList.add(new Delete());
         commandList.add(new Flood());
         commandList.add(new GenerateGroup());
         commandList.add(audio);
         commandList.add(speak);
         commandList.add(new RulesCommand());
+        commandList.add(new SiteConnect());
 
         for (Command command : commandList) {
             command.Initialize();

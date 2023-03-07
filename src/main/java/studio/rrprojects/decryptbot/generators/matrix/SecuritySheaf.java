@@ -66,7 +66,7 @@ public class SecuritySheaf {
         /*
         Step 3: Generate IC
          */
-                sheafStep.addIC(ProcessIC(alertContainer, currentStep));
+                sheafStep.addIC(ProcessIC(alertContainer, securityRating));
             }
 
             System.out.println(currentStep + ": " + sheafStep.listIC());
@@ -74,15 +74,15 @@ public class SecuritySheaf {
 
     }
 
-    private ICProgram ProcessIC(AlertContainer alertContainer, int currentStep) {
+    private ICProgram ProcessIC(AlertContainer alertContainer, int securityRating) {
         String level = alertContainer.levelIC;
 
         if (level.equalsIgnoreCase(Matrix.WHITE)) {
-            return new WhiteIC(alertContainer.categoryIC, currentStep);
+            return new WhiteIC(alertContainer.categoryIC, securityRating);
         } else if (level.equalsIgnoreCase(Matrix.GRAY)) {
-            return new GrayIC(alertContainer.categoryIC, currentStep);
+            return new GrayIC(alertContainer.categoryIC, securityRating);
         } else {
-            return new BlackIC(alertContainer.categoryIC, currentStep);
+            return new BlackIC(alertContainer.categoryIC, securityRating);
         }
     }
 
