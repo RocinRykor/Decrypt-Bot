@@ -63,11 +63,11 @@ public class Ping extends ResponseCommand {
         //MessageUtils.SendMessage(matrixHost.GenerateHost("Hard"), cmd.getEvent().getChannel());
         //MessageUtils.SendMessage(matrixHost.GenerateHost("Unbreakable"), cmd.getEvent().getChannel());
 
-        //securitySheaf.generateSheaf(1, 7, false);
+        securitySheaf.generateSheaf(1, 7, false);
 
-        LifeLeft lifeLeft = new LifeLeft();
-        lifeLeft.stressTest(10000);
-
-        DebugUtils.CautionMsg("TEST SUCCESS!");
+//        LifeLeft lifeLeft = new LifeLeft();
+//        lifeLeft.stressTest(10000);
+//
+//        DebugUtils.CautionMsg("TEST SUCCESS!");
     }
 }
