@@ -35,6 +35,7 @@ public class CommandController {
         commandList.add(speak);
         commandList.add(new RulesCommand());
         commandList.add(new SiteConnect());
+        commandList.add(new ChoreCommand());
 
         for (Command command : commandList) {
             command.Initialize();

@@ -29,7 +29,7 @@ public abstract class Command {
 
         DebugUtils.CautionMsg("EXECUTING COMMAND: " + cmd.getPrimaryCommand());
         DebugUtils.CautionMsg("PARAMETERS: " + cmd.getListParameters().toString());
-        DebugUtils.CautionMsg("ARGUEMENTS: " + cmd.getListArgs().toString());
+        DebugUtils.CautionMsg("ARGUMENTS: " + cmd.getListArgs().toString());
     };
 
     public void executeHelp() {

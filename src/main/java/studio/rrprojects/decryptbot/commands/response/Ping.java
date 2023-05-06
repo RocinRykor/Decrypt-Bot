@@ -1,17 +1,13 @@
 package studio.rrprojects.decryptbot.commands.response;
 
+import net.dv8tion.jda.api.interactions.callbacks.IMessageEditCallback;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
-import studio.rrprojects.decryptbot.constants.MarkdownStyles;
-import studio.rrprojects.decryptbot.generators.matrix.MatrixHost;
-import studio.rrprojects.decryptbot.generators.matrix.SecuritySheaf;
-import studio.rrprojects.decryptbot.rollers.LifeLeft;
+import studio.rrprojects.decryptbot.controllers.ChoreListController;
 import studio.rrprojects.decryptbot.utils.MessageUtils;
-import studio.rrprojects.util_library.DebugUtils;
 
 public class Ping extends ResponseCommand {
 
-    private MatrixHost matrixHost;
-    private SecuritySheaf securitySheaf;
+    private ChoreListController choreListController;
 
     @Override
     public String getName() {
@@ -37,37 +33,15 @@ public class Ping extends ResponseCommand {
     public void executeMain(CommandContainer cmd) {
         super.executeMain(cmd);
 
-        /*
-        if (super.subCommandMapContains(cmd.getPrimaryParameter())) {
-            super.searchSubCommands(cmd.getPrimaryParameter()).run();
-        }
-         */
-
         testFunction(cmd);
     }
 
     @Override
     public void Initialize() {
         super.Initialize();
-
-        matrixHost = new MatrixHost();
-        securitySheaf = new SecuritySheaf();
-        
-        getSubCommandMap().put("test", () -> testFunction(cmd));
     }
 
     private void testFunction(CommandContainer cmd) {
-
-        //MessageUtils.SendMessage(matrixHost.GenerateHost("Easy"), cmd.getEvent().getChannel());
-        //MessageUtils.SendMessage(matrixHost.GenerateHost("Medium"), cmd.getEvent().getChannel());
-        //MessageUtils.SendMessage(matrixHost.GenerateHost("Hard"), cmd.getEvent().getChannel());
-        //MessageUtils.SendMessage(matrixHost.GenerateHost("Unbreakable"), cmd.getEvent().getChannel());
-
-        securitySheaf.generateSheaf(1, 7, false);
-
-//        LifeLeft lifeLeft = new LifeLeft();
-//        lifeLeft.stressTest(10000);
-//
-//        DebugUtils.CautionMsg("TEST SUCCESS!");
     }
+
 }
