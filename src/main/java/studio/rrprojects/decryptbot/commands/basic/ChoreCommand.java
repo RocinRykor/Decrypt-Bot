@@ -29,10 +29,14 @@ public class ChoreCommand extends Command {
         super.Initialize();
 
         choreListController = new ChoreListController();
-        choreListController.addChore("Take out trash");
-        choreListController.addChore("Wash Dishes");
-        choreListController.addChore("Laundry");
+        choreListController.addChore("Take out trash/recycle");
+        choreListController.addChore("Dishes 1/2");
+        choreListController.addChore("Dishes 2/2");
         choreListController.addChore("Clean the counters");
+        choreListController.addChore("Clean Our Desks");
+        choreListController.addChore("Tidy Bathroom");
+        choreListController.addChore("Pick dirty laundry up off floor");
+        choreListController.addChore("Clean Fridge");
     }
 
     public void executeMain(CommandContainer cmd) {
