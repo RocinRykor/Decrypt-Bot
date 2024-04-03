@@ -2,6 +2,7 @@ package studio.rrprojects.decryptbot;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.constants.FileConstants;
@@ -49,7 +50,10 @@ public class MainController {
     }
 
     private JDA StartJDA() {
-        return JDABuilder.createDefault(configController.getOption("botToken")).build();
+        return JDABuilder
+                .createDefault(configController.getOption("botToken"))
+                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                .build();
 
     }
 
