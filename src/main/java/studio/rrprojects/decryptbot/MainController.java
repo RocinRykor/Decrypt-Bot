@@ -2,21 +2,16 @@ package studio.rrprojects.decryptbot;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import studio.rrprojects.decryptbot.audio.AudioController;
 import studio.rrprojects.decryptbot.commands.CommandController;
 import studio.rrprojects.decryptbot.config.ConfigController;
 import studio.rrprojects.decryptbot.constants.FileConstants;
 import studio.rrprojects.decryptbot.discord.BotListener;
-import studio.rrprojects.decryptbot.gui.RulesGui;
 import studio.rrprojects.util_library.DebugUtils;
 import studio.rrprojects.util_library.FileUtil;
-
-import javax.security.auth.login.LoginException;
 
 public class MainController {
     private final ConfigController configController;
     private final JDA jda;
-    private final AudioController audioController;
     private final CommandController commandController;
 
     MainController() {
@@ -30,10 +25,6 @@ public class MainController {
 
         //Launch JDA
         jda = StartJDA();
-
-
-        //Initialize AudioController
-        audioController = new AudioController();
 
         //Initialize Commands
         commandController = new CommandController();
@@ -58,15 +49,8 @@ public class MainController {
     }
 
     private JDA StartJDA() {
-        try {
-            return JDABuilder.createDefault(configController.getOption("botToken")).build();
-        } catch (LoginException e) {
-            e.printStackTrace();
-            DebugUtils.ErrorMsg("MAIN CONTROLLER: ERROR - UNABLE TO LOGIN, PLEASE CHECK CONFIG FILE");
-            System.exit(0);
-        }
+        return JDABuilder.createDefault(configController.getOption("botToken")).build();
 
-        return null;
     }
 
     public JDA getJda() {
@@ -74,7 +58,5 @@ public class MainController {
     }
 
     public void ReadyEvent() {
-        audioController.setGuild(jda.getGuilds().get(0));
-        commandController.ProcessAudioController(audioController);
     }
 }

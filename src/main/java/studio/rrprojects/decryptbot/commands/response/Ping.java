@@ -1,13 +1,8 @@
 package studio.rrprojects.decryptbot.commands.response;
 
-import net.dv8tion.jda.api.interactions.callbacks.IMessageEditCallback;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
-import studio.rrprojects.decryptbot.controllers.ChoreListController;
-import studio.rrprojects.decryptbot.utils.MessageUtils;
 
 public class Ping extends ResponseCommand {
-
-    private ChoreListController choreListController;
 
     @Override
     public String getName() {

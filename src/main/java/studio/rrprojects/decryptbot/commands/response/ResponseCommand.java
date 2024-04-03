@@ -1,6 +1,6 @@
 package studio.rrprojects.decryptbot.commands.response;
 
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.utils.MessageUtils;

@@ -1,9 +1,9 @@
 package studio.rrprojects.decryptbot.commands.basic;
 
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageHistory;
-import net.dv8tion.jda.api.entities.TextChannel;
 import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.utils.DiscordUtils;

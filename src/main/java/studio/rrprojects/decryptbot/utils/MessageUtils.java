@@ -1,8 +1,8 @@
 package studio.rrprojects.decryptbot.utils;
 
-import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
 import studio.rrprojects.decryptbot.constants.MarkdownStyles;
 import studio.rrprojects.util_library.DebugUtils;

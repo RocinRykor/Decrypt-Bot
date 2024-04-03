@@ -1,10 +1,10 @@
 package studio.rrprojects.decryptbot.commands.basic;
 
-import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import studio.rrprojects.decryptbot.commands.Command;
 import studio.rrprojects.decryptbot.commands.container.CommandContainer;
-import studio.rrprojects.decryptbot.constants.DiscordContants;
+
 import studio.rrprojects.decryptbot.utils.DiscordUtils;
 
 import java.text.DateFormat;
@@ -59,14 +59,14 @@ public class Flood extends Command {
                 String message = "Message #" + i + "/" + floodAmount + "\n";
 
                 long currentTime = System.currentTimeMillis();
-                long estimatedFinishTime = currentTime + ((long) remainingPosts * DiscordContants.RATE_LIMIT_DELAY);
+                long estimatedFinishTime = currentTime + ((long) remainingPosts * 5000); //TODO Fix Magic Number
 
                 message += "Estimate Time of Completion: " + ConvertLongToDate(estimatedFinishTime);
 
                 channel.sendMessage(message).complete();
 
                 try {
-                    sleep(DiscordContants.RATE_LIMIT_DELAY);
+                    sleep(5000); //TODO Fix Magic Number
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

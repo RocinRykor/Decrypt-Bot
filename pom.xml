@@ -22,13 +22,15 @@
             <url>https://jcenter.bintray.com</url>
         </repository>
 
-        <!-- Discord Audio Player -->
+        <!-- Discord Audio Player
         <repository>
             <id>central</id>
             <name>bintray</name>
             <url>https://jcenter.bintray.com</url>
         </repository>
+        -->
 
+        <!--
         <repository>
             <id>dv8tion</id>
             <name>m2-dv8tion</name>
@@ -39,6 +41,7 @@
             <name>Maven Central</name>
             <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
+        -->
 
     </repositories>
 
@@ -47,48 +50,55 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>2.0.5</version>
+            <version>2.0.9</version>
         </dependency>
 
-        <!-- Discord Audio Player -->
+        <!-- Discord Audio Player
         <dependency>
             <groupId>com.sedmelluq</groupId>
             <artifactId>lavaplayer</artifactId>
             <version>1.3.77</version>
         </dependency>
+        -->
 
         <!-- https://mvnrepository.com/artifact/net.dv8tion/JDA -->
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>5.0.0-alpha.11</version>
+            <version>5.0.0-beta.21</version>
         </dependency>
 
-        <!-- Google TTS -->
+        <!-- Google TTS
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-texttospeech</artifactId>
             <version>2.6.0</version>
         </dependency>
+        -->
 
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20220924</version>
+            <version>20240303</version>
         </dependency>
 
 
+        <!--
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-speech</artifactId>
             <version>4.0.0</version>
         </dependency>
+        -->
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
+            <version>4.5.14</version>
         </dependency>
+
+
 
     </dependencies>
 
