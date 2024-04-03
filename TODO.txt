@@ -1,3 +1,0 @@
-TODO
-8.3 - Add alias searching to commands
-8.3 - Delete command doesnt delete the original message
