@@ -19,7 +19,7 @@ public class CommandController {
         //Basic List
         commandList.add(new Ping());
         commandList.add(new RollCommand());
-        commandList.add(new AssencingTest());
+        commandList.add(new AssensingTest());
         commandList.add(new Delete());
         commandList.add(new Flood());
         commandList.add(new GenerateGroup());

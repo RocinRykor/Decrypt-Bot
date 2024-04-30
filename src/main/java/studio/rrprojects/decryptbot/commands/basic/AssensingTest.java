@@ -7,10 +7,10 @@ import studio.rrprojects.decryptbot.utils.APIUtils;
 
 import java.util.ArrayList;
 
-public class AssencingTest extends studio.rrprojects.decryptbot.commands.Command {
+public class AssensingTest extends studio.rrprojects.decryptbot.commands.Command {
     @Override
     public String getName() {
-        return "Assencing";
+        return "Assensing";
     }
 
     @Override
@@ -24,12 +24,12 @@ public class AssencingTest extends studio.rrprojects.decryptbot.commands.Command
     }
 
     /*
-    Performs an assencing success test, along with a supplementary aura reading test
-    Returns the roll results as well as the relevant info from the Assencing Table (CORE p.172)
+    Performs an assensing success test, along with a supplementary aura reading test
+    Returns the roll results as well as the relevant info from the Assensing Table (CORE p.172)
 
     Command format will include 1-3 integers in the following order
 
-    Assencing Test Dice Pool - Required
+    Assensing Test Dice Pool - Required
     Target Number - Optional - Defaults to 4
     Aura Reading Dice Pool - Optional - Defaults to 0
      */
@@ -39,7 +39,7 @@ public class AssencingTest extends studio.rrprojects.decryptbot.commands.Command
         super.executeMain(cmd);
 
         ArrayList<String> params = cmd.getListParameters();
-        int assencingTestDicePool = 1;
+        int assensingTestDicePool = 1;
         int targetNumber = 4;
         int auraReadingDicePool = 0;
 
@@ -51,20 +51,20 @@ public class AssencingTest extends studio.rrprojects.decryptbot.commands.Command
         }
 
         if (params.size() > 0) {
-            assencingTestDicePool = Integer.parseInt(params.get(0));
+            assensingTestDicePool = Integer.parseInt(params.get(0));
         }
 
-        System.out.println("Assencing Dice Pool: " + assencingTestDicePool);
+        System.out.println("Assensing Dice Pool: " + assensingTestDicePool);
         System.out.println("Target Number: " + targetNumber);
         System.out.println("Aura Dice Pool: " + auraReadingDicePool);
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("dice_pool", assencingTestDicePool);
+        jsonObject.put("dice_pool", assensingTestDicePool);
         jsonObject.put("target_number", targetNumber);
         jsonObject.put("aura_reading", auraReadingDicePool);
 
         APIUtils apiUtils = new APIUtils();
-        String URL = "https://sixthworldsprawl.com/api/bot/assencing_test";
+        String URL = "https://sixthworldsprawl.com/api/bot/assensing_test";
 
         HttpResponse response = apiUtils.POSTtoURL(URL, jsonObject);
         JSONObject jsonResponse = apiUtils.ConvertResponseToJSON(response);
@@ -72,7 +72,7 @@ public class AssencingTest extends studio.rrprojects.decryptbot.commands.Command
         // Going to have to recreate the RollFormatter for this since it is using a different layout of data
         int totalHits = jsonResponse.getInt("Total Hits");
 
-        String title = "Comprehensive Assencing Test:\n";
+        String title = "Comprehensive Assensing Test:\n";
         String totalHitsString = "<Total Hits : " + totalHits + " >\n";
         String targetString = "Target Number: " + targetNumber + "\n\n";
 
@@ -81,14 +81,14 @@ public class AssencingTest extends studio.rrprojects.decryptbot.commands.Command
             tableBlock = convertTableToBlock(jsonResponse.getJSONObject("Information"));
         }
 
-        String resultsAssencing = convertTestToBlock(jsonResponse.getJSONObject("Assencing Test"), "Assencing Test");
+        String resultsAssensing = convertTestToBlock(jsonResponse.getJSONObject("Assensing Test"), "Assensing Test");
 
         String resultsAuraReading = "";
         if (auraReadingDicePool > 0) {
             resultsAuraReading = convertTestToBlock(jsonResponse.getJSONObject("Aura Reading"), "Aura Reading Supplementary Test");
         }
 
-        String outputMessage = title + totalHitsString + targetString + tableBlock + resultsAssencing + resultsAuraReading;
+        String outputMessage = title + totalHitsString + targetString + tableBlock + resultsAssensing + resultsAuraReading;
 
         SendBlockMessage(outputMessage, "md", cmd.getEvent().getChannel());
 
